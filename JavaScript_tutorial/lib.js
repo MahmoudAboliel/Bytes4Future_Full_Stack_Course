@@ -23,3 +23,7 @@ export const reverse = (num) => {
 
     return result
 }
+
+export const x = () => {
+    
+}
