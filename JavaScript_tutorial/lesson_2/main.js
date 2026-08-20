@@ -1,4 +1,4 @@
-import { operatingOnArray, sortingArray } from "./lesson2_lilb.js";
+import { operatingOnArray, sortingArray } from "./lib.js";
 
 const ar = [1, 2, 3, 4, 5, 6];
 console.log("before operating:", ar);
