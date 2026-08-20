@@ -327,18 +327,22 @@ code {
 #services > h4 {
   color: var(--primary-color);
   font-size: 14px;
+  text-transform: uppercase;
 }
 #services > h2 {
   color: var(--text-color);
   font-size: 42px;
 }
 #services .services-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 #services .service-card {
+  width: min-content;
+  min-width: 350px;
   border: 1px solid #27272a;
   padding: 14px;
   background-color: #27272a73;
@@ -368,3 +372,88 @@ code {
 }
 /* End Services Section */
 
+/* Start Work Section */
+#work {
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media (max-width: 768px) {
+  #work {
+    padding: 20px;
+  }
+}
+#work > h4 {
+  color: var(--primary-color);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+#work > h2 {
+  color: var(--text-color);
+  font-size: 42px;
+}
+#work .work-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+#work .work-card {
+  width: min-content;
+  min-width: 400px;
+  border: 1px solid #27272a;
+  padding: 14px;
+  background-color: #27272a73;
+  border-radius: 12px;
+  transition: all .3s ease-in-out;
+}
+#work .work-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+#work .work-card .tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#work .work-card .tags-group span {
+  background-color: var(--bg-card-color);
+  color: var(--text-secondery);
+  font-size: 14px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--text-secondery);
+}
+#work .work-card .tags-group span:first-child {
+  border-color: var(--primary-color);
+}
+#work .work-card h2 {
+  color: var(--text-color);
+  font-size: 28px;
+  margin: 8px 0;
+}
+#work .work-card p {
+  color: var(--text-secondery);
+  font-size: 16px;
+}
+#work .work-card .work-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+#work .work-card .work-links span {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 100;
+  border-radius: 20px;
+  transform: scale(0.9);
+  transition: all .3s ease-in-out;
+}
+#work .work-card .work-links span:hover {
+  text-decoration: underline;
+  transform: scale(1);
+}
+/* End Work Section */
