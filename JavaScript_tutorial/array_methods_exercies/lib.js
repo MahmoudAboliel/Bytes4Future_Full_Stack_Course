@@ -436,7 +436,7 @@ export const extractPassedStudents = (arr = [{ name: "", status: "" }]) => {
 
 // Extract products with price above the average • Input: [{name: "Table", price: 500}, {name: "Chair", price: 200}, {name: "Desk", price: 800}, {name: "Lamp", price: 150}] • Expected Output: [{name: "Table", price: 500}, {name: "Desk", price: 800}]
 export const productsAboveAverage = (arr = [{ name: "", price: 0 }]) => {
-  const sum = arr.reduce((total, val) => (total += val.price), 0);
+  const sum = arr.reduce((total, val) => total + val.price, 0);
   const avg = Math.round(sum / arr.length);
   return arr.filter((item) => item.price > avg);
 };
@@ -446,10 +446,3 @@ export const sortNames = (arr = [{ name: "", age: 0 }]) => {
   arr.sort((a, b) => b.age - a.age);
   return arr.map((item) => item.name);
 };
-
-const names_3 = [
-  { name: "Ahmad", age: 25 },
-  { name: "Omar", age: 30 },
-  { name: "Layla", age: 22 },
-];
-console.log(sortNames(names_3));
