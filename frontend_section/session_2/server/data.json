@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "name": "Mahmoud",
+      "family": "Abulail",
+      "age": 28,
+      "id": "PIKV74iuLMc"
+    },
+    {
+      "name": "Kram",
+      "family": "Abulail",
+      "age": 16,
+      "id": "VmAGZyw2pu4"
+    },
+    {
+      "name": "Omar",
+      "family": "Abulail",
+      "age": 19,
+      "id": "tuYFopGEYg4"
+    }
+  ],
+  "posts": [],
+  "comments": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
