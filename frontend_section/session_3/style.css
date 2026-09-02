@@ -1,0 +1,35 @@
+#mainForm .group-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#mainForm .group-field input {
+    padding: 6px;
+    font-size: 18px;
+}
+
+#mainForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-size: 20px;
+}
+
+#mainForm .group-buttons {
+    display: flex;
+    gap: 8px;
+    font-size: 18px;
+}
+
+#mainForm .group-buttons input {
+    font-size: 20px;
+    padding: 8px;
+    color: white;
+    border: none;
+}
+#mainForm .group-buttons input[type=submit] {
+    background-color: #0044aa;
+}
+#mainForm .group-buttons input[type=button] {
+    background-color: #aa4400;
+}

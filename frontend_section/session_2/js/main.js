@@ -17,18 +17,18 @@ fetch(`${BASE_URL}/users`)
                 for (let i in users) {
                   const user = {};
                   const { id, name } = users[i];
-                  user["id"] = id;
-                  user["name"] = name;
-                  user["postsCount"] = posts.filter(
+                  user["Id"] = id;
+                  user["Name"] = name;
+                  user["Posts Count"] = posts.filter(
                     (post) => post.userId == id,
                   ).length;
-                  user["albumsCount"] = albums.filter(
+                  user["Albums Count"] = albums.filter(
                     (album) => album.userId == id,
                   ).length;
-                  user["finishedJobs"] = todos.filter(
+                  user["Finished Jobs"] = todos.filter(
                     (todo) => todo.userId == id && todo.completed,
                   ).length;
-                  user["unfinishedJobs"] = todos.filter(
+                  user["Unfinished Jobs"] = todos.filter(
                     (todo) => todo.userId == id && !todo.completed,
                   ).length;
                   data.push(user);

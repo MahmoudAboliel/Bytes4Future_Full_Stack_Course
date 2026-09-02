@@ -1,0 +1,41 @@
+[
+  {
+    "type": "text",
+    "name": "userName",
+    "label": "User Name",
+    "minlength": 5,
+    "required": true
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "label": "User Email",
+    "required": true
+  },
+  {
+    "type": "password",
+    "name": "password",
+    "label": "User Password",
+    "required": true
+  },
+  {
+    "type": "number",
+    "name": "age",
+    "label": "User Age",
+    "step": 4,
+    "max": 10
+  },
+  {
+    "type": "date",
+    "name": "birthDate",
+    "label": "Birth date"
+  },
+  {
+    "type": "range",
+    "name": "range",
+    "label": "Range",
+    "value": 11,
+    "min": 10,
+    "max": 20
+  }
+]
