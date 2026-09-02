@@ -60,6 +60,7 @@ const renderTableElement = (id = "", data = [], comp) => {
   // add searching field
   const inputSearch = document.createElement("input");
   inputSearch.type = "search";
+  inputSearch.name = "search";
   inputSearch.placeholder = "searching...";
   inputSearch.style.padding = "8px";
   inputSearch.style.fontSize = "18px";
