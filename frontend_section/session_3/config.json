@@ -3,7 +3,16 @@
     "type": "text",
     "name": "userName",
     "label": "User Name",
+    "defaultValue": "mahmoud",
     "minlength": 5,
+    "required": true
+  },
+  {
+    "type": "textarea",
+    "name": "summary",
+    "label": "User Summary",
+    "rows": 8,
+    "placeholder": "tell me about yourself...",
     "required": true
   },
   {
@@ -34,8 +43,43 @@
     "type": "range",
     "name": "range",
     "label": "Range",
-    "value": 11,
+    "defaultValue": 11,
     "min": 10,
     "max": 20
+  },
+  {
+    "type": "color",
+    "name": "color",
+    "label": "Color"
+  },
+  {
+    "type": "checkbox",
+    "name": "skills",
+    "label": "User Skills",
+    "options": [
+      {
+        "label": "Frontend",
+        "value": "frontend"
+      },
+      {
+        "label": "Backend",
+        "value": "backend"
+      }
+    ]
+  },
+  {
+    "type": "radio",
+    "name": "gender",
+    "label": "User Gender",
+    "options": [
+      {
+        "value": "male",
+        "label": "Male"
+      },
+      {
+        "value": "female",
+        "label": "Female"
+      }
+    ]
   }
 ]
