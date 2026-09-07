@@ -1,18 +1,46 @@
-#mainForm .group-field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-#mainForm .group-field input {
-    padding: 6px;
-    font-size: 18px;
-}
-
 #mainForm {
     display: flex;
     flex-direction: column;
     gap: 18px;
     font-size: 20px;
+    max-width: 300px;
+    height: 75dvh;
+    overflow-y: auto;
+    margin: 40px auto;
+    border: 1px solid gray;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+#mainForm .group-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#mainForm .group-field input,
+#mainForm .group-field textarea {
+    padding: 6px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid #aaaaaa;
+    border-radius: 8px;
+}
+#mainForm .group-field input:hover,
+#mainForm .group-field textarea:hover {
+    border-color: #0099ff;
+}
+
+#mainForm .file-field {
+    display: block;
+    /* height: fit-content; */
+    border: 2px dashed gray;
+    border-radius: 8px;
+    /* padding: 10px; */
+}
+#mainForm .file-field p {
+    /* line-height: 0; */
+    padding: 8px;
+    margin: 0;
 }
 
 #mainForm .group-buttons {

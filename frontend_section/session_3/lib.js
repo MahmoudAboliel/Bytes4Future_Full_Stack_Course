@@ -20,8 +20,11 @@ const radioType = (obj = {}, data = {}) => {
     radioLabel.htmlFor = radioId;
     radioLabel.innerHTML = option.label;
     radioInput.id = radioId;
-    radioInput.type = obj.type;
-    radioInput.name = obj.name;
+    Object.keys(obj).map((item) => {
+      if (item != "options") {
+        radioInput[item] = obj[item];
+      }
+    });
     radioInput.value = option.value;
     radioInput.addEventListener("input", (e) =>
       inputChange(e.target.value, data, obj.name),
@@ -43,8 +46,11 @@ const checkboxType = (obj = {}, data = {}) => {
     label.innerHTML = option.label;
 
     input.id = id;
-    input.type = obj.type;
-    input.name = obj.name;
+    Object.keys(obj).map((item) => {
+      if (item != "options") {
+        input[item] = obj[item];
+      }
+    });
     input.value = option.value;
     input.addEventListener("change", (e) => {
       const item = e.target;
@@ -69,6 +75,33 @@ const renderInput = (obj = {}, data) => {
   if (attributes.includes("name")) {
     // generate id
     const id = generateId();
+
+    // file type
+    if (obj.type == "file") {
+      const input = document.createElement("input");
+      const label = document.createElement("label");
+      const p = document.createElement("p");
+      p.classList.add("file-text");
+      p.innerHTML = "choose a file...";
+      label.classList.add("file-field");
+      attributes.map((item) => {
+        input[item] = obj[item];
+      });
+
+      label.append(input, p);
+      // label.innerHTML = obj.label ?? obj.name;
+      input.style.display = "none";
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) {
+          return;
+        }
+        p.innerHTML = file.name;
+        data[obj.name] = file;
+      });
+      div.append(label);
+      return div;
+    }
     // create elements
     const label = document.createElement("label");
     // set attribute
@@ -79,6 +112,7 @@ const renderInput = (obj = {}, data) => {
     if (obj.type == "radio") {
       if (obj.options) {
         const radioDiv = radioType(obj, data);
+        label.removeAttribute("for");
         div.append(label, radioDiv);
         return div;
       } else {
@@ -106,6 +140,7 @@ const renderInput = (obj = {}, data) => {
     if (obj.type == "checkbox") {
       if (obj.options) {
         const checkboxDiv = checkboxType(obj, data);
+        label.removeAttribute("for");
         div.append(label, checkboxDiv);
         return div;
       } else {
@@ -118,9 +153,9 @@ const renderInput = (obj = {}, data) => {
     const input = document.createElement("input");
     input.id = id;
     input.value = data[obj.name];
-    input.addEventListener("input", (e) => {
-      data[obj.name] = e.target.value;
-    });
+    input.addEventListener("input", (e) =>
+      inputChange(e.target.value, data, obj.name),
+    );
 
     attributes.map((item) => {
       input[item] = obj[item];
@@ -137,7 +172,12 @@ const renderInput = (obj = {}, data) => {
   }
 };
 
-const renderForm = (id, fields = [], onSubmit) => {
+const renderForm = ({
+  id = "",
+  fields = [],
+  onSubmit = () => {},
+  type = "json",
+}) => {
   const form = document.getElementById(id);
   const data = {};
 
@@ -159,7 +199,15 @@ const renderForm = (id, fields = [], onSubmit) => {
   submit.value = "send";
   submit.onclick = (e) => {
     e.preventDefault();
-    onSubmit(data);
+    if (type == "json") {
+      onSubmit(data);
+      return;
+    }
+    const formData = new FormData();
+    for (let key in data) {
+      formData[key] = data[key];
+    }
+    onSubmit(formData);
   };
 
   const cansel = document.createElement("input");
@@ -170,23 +218,26 @@ const renderForm = (id, fields = [], onSubmit) => {
     e.preventDefault();
     const myData = Array.from(form.querySelectorAll("input"));
 
-    for (let i in myData) {
-      if (!["submit", "button"].includes(myData[i].type)) {
-        if (myData[i].type == "range") {
-          myData[i].value = myData[i].min;
-        } else if (myData[i].type == "radio" || myData[i].type == "checkbox") {
-          myData[i].checked = false;
+    myData.map((field) => {
+      if (!["submit", "button"].includes(field.type)) {
+        if (field.type == "range") {
+          field.value = field.defaultValue ?? field.min ?? null;
+        } else if (field.type == "radio" || field.type == "checkbox") {
+          field.checked = false;
+        } else if (field.type == "file") {
+          const pragraphs = Array.from(form.querySelectorAll(".file-text"));
+          pragraphs.map((p) => (p.innerHTML = "choose a file..."));
         } else {
-          myData[i].value = myData[i].defaultValue ?? null;
+          field.value = field.defaultValue ?? null;
         }
       }
-    }
+    });
 
     // remove data from back
     for (let key in data) {
       const field = fields.find((field) => field.name == key);
       if (field.type == "checkbox") data[key] = [];
-      else data[key] = null;
+      else data[key] = field.defaultValue ?? null;
     }
   };
 

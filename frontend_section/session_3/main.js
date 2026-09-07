@@ -6,5 +6,5 @@ const onSubmit = (data = {}) => {
 fetch("./config.json")
   .then((res) => res.json())
   .then((data) => {
-    renderForm("mainForm", data, onSubmit);
+    renderForm({ id: "mainForm", fields: data, onSubmit, type: "formData" });
   });

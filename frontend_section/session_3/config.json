@@ -81,5 +81,11 @@
         "label": "Female"
       }
     ]
+  },
+  { 
+    "type": "file",
+    "name": "resume",
+    "label": "User Resume",
+    "accept": ".jpg"
   }
 ]
