@@ -16,3 +16,30 @@ const power = (n, m) => {
 };
 
 console.log(power(2, 3));
+
+
+// Backtracking Algorithm
+
+const labels = ["Sy", "Tu", "Le", "Su", "Go", "Ir"];
+const colorsPallet = ["Green", "Blue", "Red", "Yellow"];
+const sol = [];
+const countries = [
+  [1, 2, 4, 5],
+  [0, 5],
+  [0, 4],
+  [4, 5],
+  [0, 2, 3, 5],
+  [0, 1, 3, 4],
+];
+
+// const countries = {
+//   sy: [0, 1, 1, 0, 1, 1],
+//   tu: [1, 0, 0, 0, 0, 1],
+//   le:
+
+// };
+
+/**
+ * When we finished
+ * 
+ */

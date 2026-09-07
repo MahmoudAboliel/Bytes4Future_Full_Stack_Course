@@ -1,63 +1,86 @@
 #mainForm {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    font-size: 20px;
-    max-width: 300px;
-    height: 75dvh;
-    overflow-y: auto;
-    margin: 40px auto;
-    border: 1px solid gray;
-    padding: 40px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 20px;
+  max-width: 300px;
+  height: 75dvh;
+  overflow-y: auto;
+  margin: 40px auto;
+  border: 1px solid gray;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
+#mainForm::-webkit-scrollbar {
+  width: 12px; /* Width of vertical scrollbars */
+  height: 12px; /* Height of horizontal scrollbars */
+}
+
+/* 2. Style the background track */
+#mainForm::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px; /* Optional: round the track corners */
+}
+
+/* 3. Style the draggable handle (thumb) */
+#mainForm::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 8px; /* Makes the thumb pill-shaped */
+  border: 3px solid #f1f5f9; /* Creates a padding effect inside the track */
+}
+
+/* 4. Change style on hover */
+#mainForm::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
 #mainForm .group-field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 #mainForm .group-field input,
 #mainForm .group-field textarea {
-    padding: 6px;
-    font-size: 18px;
-    outline: none;
-    border: 1px solid #aaaaaa;
-    border-radius: 8px;
+  padding: 6px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
 }
 #mainForm .group-field input:hover,
 #mainForm .group-field textarea:hover {
-    border-color: #0099ff;
+  border-color: #0099ff;
 }
 
 #mainForm .file-field {
-    display: block;
-    /* height: fit-content; */
-    border: 2px dashed gray;
-    border-radius: 8px;
-    /* padding: 10px; */
+  display: block;
+  /* height: fit-content; */
+  border: 2px dashed gray;
+  border-radius: 8px;
+  /* padding: 10px; */
 }
 #mainForm .file-field p {
-    /* line-height: 0; */
-    padding: 8px;
-    margin: 0;
+  /* line-height: 0; */
+  padding: 8px;
+  margin: 0;
 }
 
 #mainForm .group-buttons {
-    display: flex;
-    gap: 8px;
-    font-size: 18px;
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
 }
 
 #mainForm .group-buttons input {
-    font-size: 20px;
-    padding: 8px;
-    color: white;
-    border: none;
+  font-size: 20px;
+  padding: 8px;
+  color: white;
+  border: none;
 }
-#mainForm .group-buttons input[type=submit] {
-    background-color: #0044aa;
+#mainForm .group-buttons input[type="submit"] {
+  background-color: #0044aa;
 }
-#mainForm .group-buttons input[type=button] {
-    background-color: #aa4400;
+#mainForm .group-buttons input[type="button"] {
+  background-color: #aa4400;
 }
