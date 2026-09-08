@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc main1.ts && node main1.js"
+    "start": "npx tsc main1.ts && node main1.js",
+    "dev": "npx tsc && node ./dist/main.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,9 @@
     "json-server": "^1.0.0-beta.15"
   },
   "devDependencies": {
-    "cors": "^2.8.6"
+    "@types/node": "^26.5.0",
+    "cors": "^2.8.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
   }
 }
