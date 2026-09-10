@@ -8,7 +8,12 @@ body {
     border: 1px solid #3f3f3f;
     border-radius: 8px;
 }
-
+#map.hidden {
+  display: none;
+}
+#form-data.hidden {
+  display: none;
+}
 #form-data {
   display: flex;
   flex-direction: column;

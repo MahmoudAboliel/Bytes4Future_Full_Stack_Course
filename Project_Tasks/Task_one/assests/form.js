@@ -12,6 +12,12 @@ const fileds = [
     label: "Last Name",
   },
   {
+    type: "number",
+    name: "age",
+    required: true,
+    label: "Age",
+  },
+  {
     type: "radio",
     name: "gender",
     label: "Gender",
@@ -41,41 +47,31 @@ const fileds = [
   },
 ];
 
-const data = [
-  [33.5119, 36.3067],
-  [33.5131, 36.2974],
-  [33.5152, 36.2768],
-  [33.5097, 36.3063],
-  [33.5125, 36.2913],
-  [33.5422, 36.2942],
-];
 const users = [];
 let done = false;
-let latCenter = 33.5119 + 33.5131 + 33.5152 + 33.5097 + 33.5125 + 33.5422;
-let logCenter = 36.3067 + 36.2974 + 36.2768 + 36.3063 + 36.2913 + 36.2942;
 
 const onSubmit = (data = {}) => {
-  if (users.length == 6 && !done) {
+  if (!done) {
+    users.push(data);
+    console.log(users);
+    if (users.length == 6) done = true;
+  }
+  if (done) {
     const form = document.getElementById("form-data");
+    const myMap = document.getElementById("map");
     const draw = document.createElement("button");
     draw.innerHTML = "draw";
     draw.type = "button";
     draw.classList.add("draw-btn");
-    draw.onclick = () => {
-      users.map((item) => {
-        latCenter += item.lat;
-        logCenter += item.log;
-      });
 
-      console.log(latCenter / 6, logCenter / 6);
+    draw.onclick = () => {
+      myMap.classList.remove("hidden");
+      form.classList.add('hidden');
     };
+
     form.append(draw);
     done = true;
     return;
-  }
-  if (users.length < 6) {
-    users.push(data);
-    console.log(users);
   }
 };
 // renderForm({ id: "mainForm", fields: data, onSubmit, type: "formData" });
