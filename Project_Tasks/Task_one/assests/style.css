@@ -1,0 +1,42 @@
+body {
+  padding: 20px;
+}
+
+#map {
+    width: 600px;
+    height: 600px;
+    border: 1px solid #3f3f3f;
+    border-radius: 8px;
+}
+
+#form-data {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 400px;
+  border: 1px solid #3f3f3f;
+  padding: 15px;
+  border-radius: 15px;
+}
+#form-data .group-field {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#form-data .group-field input {
+  padding: 5px;
+  font-size: 20px;
+}
+
+#form-data .group-buttons {
+  display: flex;
+  gap: 20px;
+}
+#form-data .group-buttons input {
+  font-size: 20px;
+}
+
+#form-data .draw-btn {
+  font-size: 20px;
+  padding: 15px;
+}

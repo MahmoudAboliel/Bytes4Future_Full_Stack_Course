@@ -1,17 +1,3 @@
-// type User = {
-//   name: string;
-//   age: number;
-//   city: string;
-// };
-
-// const user1: User = {
-//   name: "Mahmoud Abulail",
-//   age: 28,
-//   city: "Damascus Countryside",
-// };
-
-// console.log(user1);
-
 // const arr: (number | string)[] = [1, 2, 3, "Mahmoud"];
 // const arr2: Array<number | string> = [1, 2, 3, "Mahmoud"];
 
@@ -25,4 +11,4 @@ const calculator = (startTime: string, finalTime: string): number => {
   return minutes;
 };
 
-console.log(calculator("1:30", "5:00"));
+console.log('You have:', calculator("1:30", "5:00"), 'minutes');

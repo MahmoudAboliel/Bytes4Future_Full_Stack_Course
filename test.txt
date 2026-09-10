@@ -1,0 +1,36 @@
+# Task 1
+- fields
+1- first name
+2- last name
+3- gender
+4- age
+5- leng, lang
+Add button
+
+enter 6 users
+
+- Draw button 
+replace form with map
+marks for all users
+bolegon for men and other for wemen
+the center and zoom should be 
+
+calculate S for each bolegon
+specific any one is bigger
+
+For winers show popup for long far one
+For lossers how popup for smaller age
+
+الفائزين اظهار بوب اب لابعد واحد
+الخاسرين اظهار اصغر عمر
+
+Final report for project
+
+
+name                lat                lon
+                  33.5119           36.3067
+                  33.5131           36.2974
+                  33.5152           36.2768
+                  33.5097           36.3063
+                  33.5125           36.2913
+                  33.5422           36.2942
