@@ -12,7 +12,7 @@ const inputChange = (value, data, name) => (data[name] = value);
 
 const radioType = (obj = {}, data = {}) => {
   const radioDiv = document.createElement("div");
-
+  radioDiv.classList.add("radio-group");
   obj.options.map((option) => {
     const radioLabel = document.createElement("label");
     const radioInput = document.createElement("input");
@@ -89,7 +89,7 @@ const renderInput = (obj = {}, data) => {
       });
 
       label.append(input, p);
-      // label.innerHTML = obj.label ?? obj.name;
+      // label.innerHTML = obj.label || obj.name;
       input.style.display = "none";
       input.addEventListener("change", (e) => {
         const file = e.target.files[0];
@@ -188,7 +188,7 @@ const renderForm = ({
   fields.map((field) => {
     if (field.name) {
       if (field.type == "checkbox") data[field.name] = [];
-      else data[field.name] = field.value ?? field.defaultValue ?? null;
+      else data[field.name] = field.value || field.defaultValue || null;
     }
     const myField = renderInput(field, data);
     form.appendChild(myField);
@@ -201,49 +201,38 @@ const renderForm = ({
   const submit = document.createElement("input");
   submit.type = "submit";
   submit.value = buttons.send;
-  submit.onclick = (e) => {
+
+  const cansel = document.createElement("input");
+  cansel.type = "reset";
+  cansel.value = buttons.cancel;
+
+  const submitFunc = (e) => {
     e.preventDefault();
     if (type == "json") {
       onSubmit(data);
+      resetFunc();
+      cansel.click();
       return;
     }
     const formData = new FormData();
     for (let key in data) {
-      formData[key] = data[key];
+      formData.append(key, data[key]);
     }
     onSubmit(formData);
+    resetFunc();
+    cansel.click();
   };
 
-  const cansel = document.createElement("input");
-  cansel.type = "button";
-  cansel.value = buttons.cancel;
-  cansel.onclick = (e) => {
-    // remove data from UI
-    e.preventDefault();
-    const myData = Array.from(form.querySelectorAll("input"));
-
-    myData.map((field) => {
-      if (!["submit", "button"].includes(field.type)) {
-        if (field.type == "range") {
-          field.value = field.defaultValue ?? field.min ?? null;
-        } else if (field.type == "radio" || field.type == "checkbox") {
-          field.checked = false;
-        } else if (field.type == "file") {
-          const pragraphs = Array.from(form.querySelectorAll(".file-text"));
-          pragraphs.map((p) => (p.innerHTML = "choose a file..."));
-        } else {
-          field.value = field.defaultValue ?? null;
-        }
-      }
-    });
-
-    // remove data from back
+  const resetFunc = () => {
     for (let key in data) {
       const field = fields.find((field) => field.name == key);
-      if (field.type == "checkbox") data[key] = [];
-      else data[key] = field.defaultValue ?? null;
+      if (field?.type == "checkbox") data[key] = [];
+      else data[key] = field?.defaultValue || null;
     }
   };
+
+  submit.addEventListener("click", submitFunc);
+  cansel.addEventListener("click", resetFunc);
 
   div.append(submit, cansel);
 

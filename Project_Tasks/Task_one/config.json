@@ -1,0 +1,48 @@
+[
+  {
+    "type": "text",
+    "name": "firstName",
+    "required": true,
+    "label": "First Name"
+  },
+  {
+    "type": "text",
+    "name": "lastName",
+    "required": true,
+    "label": "Last Name"
+  },
+  {
+    "type": "number",
+    "name": "age",
+    "required": true,
+    "label": "Age"
+  },
+  {
+    "type": "radio",
+    "name": "gender",
+    "label": "Gender",
+    "options": [
+      {
+        "value": "male",
+        "label": "Male"
+      },
+      {
+        "value": "female",
+        "label": "Female"
+      }
+    ],
+    "required": true
+  },
+  {
+    "type": "number",
+    "name": "lat",
+    "label": "Lat",
+    "required": true
+  },
+  {
+    "type": "number",
+    "name": "lng",
+    "label": "Lng",
+    "required": true
+  }
+]
