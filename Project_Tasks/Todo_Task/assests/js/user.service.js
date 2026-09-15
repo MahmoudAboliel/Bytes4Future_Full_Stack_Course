@@ -15,6 +15,11 @@ export const addUser = (user = {}) => {
 
 export const deleteUser = (userId = "") => {
   const userIndex = myUsers.findIndex((e) => e.id == userId);
+  if (userIndex == -1)
+    return {
+      status: 400,
+      message: "this user is not found.",
+    };
   myUsers.splice(userIndex, 1);
   return { status: 200, message: "delete user successfully." };
 };
