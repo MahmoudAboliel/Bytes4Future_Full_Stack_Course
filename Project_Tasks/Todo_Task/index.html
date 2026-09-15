@@ -3,76 +3,185 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assests/css/style.css" />
-    <title>Todo Task With JS</title>
+    <title>Todo List</title>
   </head>
-  <body>
-    <article class="task-card" data-status="in_progress" data-priority="high">
-      <!-- الشريط الجانبي الملوّن حسب الأولوية -->
-      <span class="task-card__priority-bar" aria-hidden="true"></span>
-
-      <!-- الرأس: العنوان + القائمة -->
-      <header class="task-card__header">
-        <div class="task-card__title-wrap">
-          <span class="task-card__status-dot" title="قيد التنفيذ"></span>
-          <h3 class="task-card__title">تصميم واجهة الصفحة الرئيسية</h3>
-        </div>
-
-        <button class="task-card__menu" aria-label="خيارات المهمة">
-          <svg viewBox="0 0 24 24" width="18" height="18">
-            <circle cx="12" cy="5" r="1.8" />
-            <circle cx="12" cy="12" r="1.8" />
-            <circle cx="12" cy="19" r="1.8" />
-          </svg>
+  <body class="">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid shadow pb-2">
+        <a class="navbar-brand" href="./index.html">TodoList</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </header>
-
-      <!-- الوصف -->
-      <p class="task-card__description">
-        إنشاء تصميم UI/UX متجاوب للصفحة الرئيسية مع دعم الوضع الليلي.
-      </p>
-
-      <!-- الوسوم -->
-      <ul class="task-card__tags">
-        <li class="tag">ui</li>
-        <li class="tag">design</li>
-        <li class="tag">figma</li>
-      </ul>
-
-      <!-- شريط الحالة والأولوية -->
-      <div class="task-card__badges">
-        <span class="badge badge--status">🔄 قيد التنفيذ</span>
-        <span class="badge badge--priority">🔥 عالية</span>
-      </div>
-
-      <!-- تاريخ الاستحقاق -->
-      <div class="task-card__due">
-        <svg viewBox="0 0 24 24" width="14" height="14">
-          <rect x="3" y="5" width="18" height="16" rx="2" />
-          <path d="M8 3v4M16 3v4M3 10h18" />
-        </svg>
-        <span>الاستحقاق: 25 سبتمبر 2026</span>
-      </div>
-
-      <!-- الفوتر: المعيَّنون + المنشئ + التواريخ -->
-      <footer class="task-card__footer">
-        <div class="task-card__assignees" title="المسؤولون">
-          <img src="https://i.pravatar.cc/40?u=mahmoud" alt="Mahmoud Abulail" />
-          <img src="https://i.pravatar.cc/40?u=sara" alt="Sara Al-Ahmad" />
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >Tasks</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./users.html">Users</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
         </div>
+      </div>
+    </nav>
+    <div class="container mt-2">
+      <!-- section one -->
+      <div class="d-flex gap-3 container-sections">
+        <div class="card flex-grow-1">
+          <div class="card-header bg-body-tertiary">Backlog</div>
+          <div class="card-body d-flex flex-column gap-3">
+            <!-- task one -->
+            <div class="card task-card" style="width: 18rem">
+              <div class="card-body">
+                <div>
+                  <h5 class="card-title">Card title</h5>
 
-        <div class="task-card__meta">
-          <span title="المُنشئ">👤 أنشأها: محمود</span>
-          <span title="آخر تحديث">✏️ 13 سبتمبر</span>
+                </div>
+                <div>
+                  <span class="badge text-bg-warning">ui</span>
+                  <span class="badge text-bg-warning">design</span>
+                  <span class="badge text-bg-warning">figma</span>
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card’s content.
+                </p>
+                <div>
+                  <span class="badge text-bg-info text-light">in progress</span>
+                  <span class="badge text-bg-danger text-light">high</span>
+                </div>
+                <div class="badge text-bg-secondary">
+                  due date: 25 sep 2026
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="creator">creator: Mahmoud</p>
+                    <p class="creator-date">13 sep</p>
+                  </div>
+                  <div class="">
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_10.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_11.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_12.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- task two -->
+            <div class="card task-card" style="width: 18rem">
+              <div class="card-body">
+                <div>
+                  <h5 class="card-title">Card title</h5>
+
+                </div>
+                <div>
+                  <span class="badge text-bg-warning">ui</span>
+                  <span class="badge text-bg-warning">design</span>
+                  <span class="badge text-bg-warning">figma</span>
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card’s content.
+                </p>
+                <div>
+                  <span class="badge text-bg-info text-light">in progress</span>
+                  <span class="badge text-bg-danger text-light">high</span>
+                </div>
+                <div class="badge text-bg-secondary">
+                  due date: 25 sep 2026
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="creator">creator: Mahmoud</p>
+                    <p class="creator-date">13 sep</p>
+                  </div>
+                  <div class="">
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_10.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_11.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="./assests/images/patient_12.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
-    </article>
-    <div>
-      <h1>users</h1>
-      <div id="users"></div>
-      <h1>tasks</h1>
-      <div id="tasks"></div>
+        <!-- section two -->
+        <div class="card flex-grow-1">
+          <div class="card-header">In Progress</div>
+          <div class="card-body"></div>
+        </div>
+        <!-- section three -->
+        <div class="card flex-grow-1">
+          <div class="card-header">Done</div>
+          <div class="card-body"></div>
+        </div>
+      </div>
     </div>
+    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="./assests/js/main.js"></script>
   </body>
 </html>

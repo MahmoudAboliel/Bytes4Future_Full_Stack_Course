@@ -1,51 +1,205 @@
 {
   "users": [
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "BGyPEATsxNg"
+      "name": "Ahmad Ali",
+      "id": "u-001"
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "PkOXnYxIFy0"
+      "id": "u-002",
+      "name": "Sara Al-Ahmad",
+      "email": "sara.ahmad@example.com",
+      "avatarUrl": "./assests/images/patient_4.jpg",
+      "role": "member",
+      "createdAt": "2025-01-12T09:30:00Z",
+      "updatedAt": null
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "-9gjohqDY6w"
+      "id": "u-003",
+      "name": "Omar Khalil",
+      "email": "omar.khalil@example.com",
+      "avatarUrl": "./assests/images/patient_4.jpg",
+      "role": "member",
+      "createdAt": "2025-01-15T11:15:00Z",
+      "updatedAt": null
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "fMfRzdnxBxw"
+      "id": "u-004",
+      "name": "Layla Hassan",
+      "email": "layla.hassan@example.com",
+      "avatarUrl": "./assests/images/patient_11.jpg",
+      "role": "member",
+      "createdAt": "2025-02-01T10:00:00Z",
+      "updatedAt": null
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "EprGnkMPEOA"
+      "id": "u-005",
+      "name": "Yousef Nasser",
+      "email": "yousef.nasser@example.com",
+      "avatarUrl": "./assests/images/patient_13.jpg",
+      "role": "guest",
+      "createdAt": "2025-02-05T14:20:00Z",
+      "updatedAt": null
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "Y7qHTNXIQSU"
+      "name": "ali mohamd",
+      "id": "i33PhyqfD5E"
     },
     {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "EBYo21uzUAM"
-    },
-    {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "zNj43mFosrw"
-    },
-    {
-      "name": "mahmoud",
-      "email": "mahmoud@gmail.com",
-      "id": "DvKOjjjnT1c"
+      "name": "ali",
+      "email": "ali@gmail.com",
+      "id": "GBIWRYw8Dw8"
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "t-001",
+      "title": "تصميم واجهة الصفحة الرئيسية",
+      "description": "إنشاء تصميم UI/UX متجاوب للصفحة الرئيسية مع دعم الوضع الليلي.",
+      "assigneeIds": [
+        "u-001",
+        "u-002"
+      ],
+      "creatorId": "u-001",
+      "tags": [
+        "ui",
+        "design",
+        "figma"
+      ],
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-09-25T18:00:00Z",
+      "completedAt": null,
+      "createdAt": "2026-09-10T08:30:00Z",
+      "updatedAt": "2026-09-13T12:00:00Z",
+      "order": 1
+    },
+    {
+      "id": "t-002",
+      "title": "بناء API للمصادقة",
+      "description": "تنفيذ JWT Authentication مع Refresh Token وتسجيل الدخول عبر Google.",
+      "assigneeIds": [
+        "u-003"
+      ],
+      "creatorId": "u-001",
+      "tags": [
+        "backend",
+        "auth",
+        "nodejs"
+      ],
+      "status": "todo",
+      "priority": "urgent",
+      "dueDate": "2026-09-18T12:00:00Z",
+      "completedAt": null,
+      "createdAt": "2026-09-11T09:00:00Z",
+      "updatedAt": "2026-09-11T09:00:00Z",
+      "order": 2
+    },
+    {
+      "id": "t-003",
+      "title": "مراجعة كود الوحدة الأولى",
+      "description": "مراجعة Pull Requests الخاصة بمكونات React وإصلاح الملاحظات.",
+      "assigneeIds": [
+        "u-002",
+        "u-004"
+      ],
+      "creatorId": "u-002",
+      "tags": [
+        "review",
+        "react",
+        "code-quality"
+      ],
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2026-09-12T16:00:00Z",
+      "completedAt": "2026-09-12T15:20:00Z",
+      "createdAt": "2026-09-05T10:00:00Z",
+      "updatedAt": "2026-09-12T15:20:00Z",
+      "order": 3
+    },
+    {
+      "id": "t-004",
+      "title": "كتابة توثيق المشروع",
+      "description": "إنشاء README شامل وشرح endpoints الـ API باستخدام Swagger.",
+      "assigneeIds": [
+        "u-005"
+      ],
+      "creatorId": "u-003",
+      "tags": [
+        "docs",
+        "swagger"
+      ],
+      "status": "todo",
+      "priority": "low",
+      "dueDate": "2026-09-30T20:00:00Z",
+      "completedAt": null,
+      "createdAt": "2026-09-12T11:00:00Z",
+      "updatedAt": "2026-09-12T11:00:00Z",
+      "order": 4
+    },
+    {
+      "id": "t-005",
+      "title": "اختبار الأداء على 1000 مهمة",
+      "description": "قياس زمن الاستجابة وتحسين Virtual Scrolling في قائمة المهام.",
+      "assigneeIds": [
+        "u-001",
+        "u-003",
+        "u-004"
+      ],
+      "creatorId": "u-004",
+      "tags": [
+        "performance",
+        "testing",
+        "optimization"
+      ],
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-09-22T14:00:00Z",
+      "completedAt": null,
+      "createdAt": "2026-09-13T08:00:00Z",
+      "updatedAt": "2026-09-14T07:45:00Z",
+      "order": 5
+    },
+    {
+      "id": "t-006",
+      "title": "إعداد CI/CD على GitHub Actions",
+      "description": "أتمتة الاختبارات والنشر إلى Vercel عند كل push على main.",
+      "assigneeIds": [
+        "u-002"
+      ],
+      "creatorId": "u-001",
+      "tags": [
+        "devops",
+        "github-actions",
+        "ci"
+      ],
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2026-09-14T10:00:00Z",
+      "completedAt": "2026-09-14T09:30:00Z",
+      "createdAt": "2026-09-08T13:00:00Z",
+      "updatedAt": "2026-09-14T09:30:00Z",
+      "order": 6
+    },
+    {
+      "id": "t-007",
+      "title": "أرشفة المهام القديمة",
+      "description": "نقل المهام المكتملة قبل 2026 إلى حالة archived.",
+      "assigneeIds": [
+        "u-005"
+      ],
+      "creatorId": "u-004",
+      "tags": [
+        "maintenance",
+        "cleanup"
+      ],
+      "status": "archived",
+      "priority": "low",
+      "dueDate": null,
+      "completedAt": "2026-09-01T18:00:00Z",
+      "createdAt": "2026-08-20T10:00:00Z",
+      "updatedAt": "2026-09-01T18:00:00Z",
+      "order": 7
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

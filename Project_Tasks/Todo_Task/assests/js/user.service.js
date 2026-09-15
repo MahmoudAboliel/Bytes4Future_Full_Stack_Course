@@ -1,43 +1,41 @@
-import { users } from "./database.js";
+import { request } from "./api.js";
 
-const myUsers = [...users];
-
-export const getUsers = () => ({
-  data: myUsers,
-  status: 200,
-  message: "get users successfully.",
-});
-
-export const addUser = (user = {}) => {
-  myUsers.push(user);
-  return { status: 201, message: "add user successfully." };
+export const getUsers = async () => {
+  const result = await request("users");
+  return result;
 };
 
-export const deleteUser = (userId = "") => {
-  const userIndex = myUsers.findIndex((e) => e.id == userId);
-  if (userIndex == -1)
+// const u = await getUsers();
+// console.log(u);
+
+export const addUser = async (user = {}) => {
+  const users = await getUsers();
+  const checkUser = users.data?.find(u => u.email == user.email);
+  if (checkUser) {
     return {
       status: 400,
-      message: "this user is not found.",
+      message: "this user already exists.",
     };
-  myUsers.splice(userIndex, 1);
-  return { status: 200, message: "delete user successfully." };
+  }
+
+  const result = await request("users", "POST", user);
+
+  return result;
 };
 
-export const updateUser = (userId = "", data = {}) => {
-  for (let i in myUsers) {
-    if (myUsers[i].id == userId) {
-      myUsers[i] = { ...myUsers[i], ...data };
-      return {
-        data: myUsers[i],
-        status: 200,
-        message: "update user successfully.",
-      };
-    }
-  }
-  
-  return {
-    status: 400,
-    message: "this user is not found.",
-  };
+// const x = await addUser({ name: "ali", email: "ali@gmail.com" });
+// console.log(x);
+
+export const deleteUser = async (userId = "") => {
+  const result = await request(`users/${userId}`, "DELETE");
+  return result;
 };
+// const y = await deleteUser("1");
+// console.log(y);
+
+export const updateUser = async (userId = "", data = {}) => {
+  const result = await request(`users/${userId}`, "PUT", data);
+  return result;
+};
+// const z = await updateUser("i33PhyqfD5E", { name: "ali mohamd" });
+// console.log(z);

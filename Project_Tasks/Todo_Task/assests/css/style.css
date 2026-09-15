@@ -1,260 +1,48 @@
-/* ====== المتغيرات ====== */
-:root {
-  --card-bg: #ffffff;
-  --card-border: #e5e7eb;
-  --card-radius: 14px;
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
-  --shadow-lg: 0 12px 28px rgba(0,0,0,.12);
-
-  --priority-low:    #10b981;
-  --priority-medium: #f59e0b;
-  --priority-high:   #ef4444;
-  --priority-urgent: #7c3aed;
-
-  --status-todo:        #94a3b8;
-  --status-in_progress: #3b82f6;
-  --status-done:        #10b981;
-  --status-archived:    #6b7280;
-}
-
-/* ====== البطاقة الأساسية ====== */
-.task-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  padding: 18px 18px 14px 22px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-sm);
-
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-  color: var(--text-primary);
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  overflow: hidden;
-}
-
-.task-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  border-color: #d1d5db;
-}
-
-/* شريط الأولوية الجانبي */
-.task-card__priority-bar {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: var(--priority-medium);
-}
-.task-card[data-priority="low"]    .task-card__priority-bar { background: var(--priority-low); }
-.task-card[data-priority="medium"] .task-card__priority-bar { background: var(--priority-medium); }
-.task-card[data-priority="high"]   .task-card__priority-bar { background: var(--priority-high); }
-.task-card[data-priority="urgent"] .task-card__priority-bar { background: var(--priority-urgent); }
-
-/* ====== الرأس ====== */
-.task-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.task-card__title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-
-.task-card__status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  background: var(--status-in_progress);
-  box-shadow: 0 0 0 4px rgba(59,130,246,.15);
-}
-.task-card[data-status="todo"]        .task-card__status-dot { background: var(--status-todo);        box-shadow: 0 0 0 4px rgba(148,163,184,.15); }
-.task-card[data-status="in_progress"] .task-card__status-dot { background: var(--status-in_progress); box-shadow: 0 0 0 4px rgba(59,130,246,.15); }
-.task-card[data-status="done"]        .task-card__status-dot { background: var(--status-done);        box-shadow: 0 0 0 4px rgba(16,185,129,.15); }
-.task-card[data-status="archived"]    .task-card__status-dot { background: var(--status-archived);    box-shadow: 0 0 0 4px rgba(107,114,128,.15); }
-
-.task-card__title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--text-primary);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.task-card[data-status="done"] .task-card__title {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-
-.task-card__menu {
-  flex-shrink: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  color: var(--text-muted);
-  transition: background .15s, color .15s;
-}
-.task-card__menu:hover {
-  background: #f3f4f6;
-  color: var(--text-primary);
-}
-.task-card__menu svg { fill: currentColor; }
-
-/* ====== الوصف ====== */
-.task-card__description {
-  margin: 0;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ====== الوسوم ====== */
-.task-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-.tag {
-  font-size: 11.5px;
-  font-weight: 500;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: #eef2ff;
-  color: #4338ca;
-  letter-spacing: .2px;
-}
-.tag:nth-child(2n) { background: #ecfdf5; color: #047857; }
-.tag:nth-child(3n) { background: #fef3c7; color: #b45309; }
-
-/* ====== الشارات ====== */
-.task-card__badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.badge {
-  font-size: 11.5px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.badge--status   { background: #dbeafe; color: #1d4ed8; }
-.badge--priority { background: #fee2e2; color: #b91c1c; }
-
-.task-card[data-priority="low"]    .badge--priority { background:#d1fae5; color:#065f46; }
-.task-card[data-priority="medium"] .badge--priority { background:#fef3c7; color:#92400e; }
-.task-card[data-priority="high"]   .badge--priority { background:#fee2e2; color:#b91c1c; }
-.task-card[data-priority="urgent"] .badge--priority { background:#ede9fe; color:#5b21b6; }
-
-.task-card[data-status="todo"]        .badge--status { background:#f1f5f9; color:#475569; }
-.task-card[data-status="in_progress"] .badge--status { background:#dbeafe; color:#1d4ed8; }
-.task-card[data-status="done"]        .badge--status { background:#d1fae5; color:#065f46; }
-.task-card[data-status="archived"]    .badge--status { background:#e5e7eb; color:#374151; }
-
-/* ====== تاريخ الاستحقاق ====== */
-.task-card__due {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  color: var(--text-secondary);
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: #f9fafb;
-  width: fit-content;
-}
-.task-card__due svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
-/* حالة متأخرة */
-.task-card.is-overdue .task-card__due {
-  background: #fef2f2;
-  color: #b91c1c;
-}
+.container-sections {
+  /* border: 1px solid #e3e3e3; */
+  min-height: calc(100dvh - 78px);
+} 
 
-/* ====== الفوتر ====== */
-.task-card__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--card-border);
-  margin-top: 4px;
+.task-card {
+    width: 100%;
+    border-left: 4px solid red;
 }
-
-.task-card__assignees {
-  display: flex;
-  align-items: center;
+.card-text {
+  font-size: 16px;
+  margin: 4px
 }
-.task-card__assignees img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #fff;
-  box-shadow: var(--shadow-sm);
-  margin-left: -10px;
-  transition: transform .15s;
+.user-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    border: 3px solid #d3d3d3;
+    position: relative;
+    z-index: 1;
+    transition: all .3s ease-in-out;
 }
-.task-card__assignees img:first-child { margin-left: 0; }
-.task-card__assignees img:hover {
-  transform: scale(1.12);
-  z-index: 1;
+.user-image:not(:first-child) {
+    margin-left: -30px;
 }
-
-.task-card__meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  font-size: 11.5px;
-  color: var(--text-muted);
+.user-image:hover {
+  z-index: 100;
 }
-
-/* ====== الوضع الليلي ====== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --card-bg: #1f2937;
-    --card-border: #374151;
-    --text-primary: #f9fafb;
-    --text-secondary: #d1d5db;
-    --text-muted: #9ca3af;
-  }
-  .task-card__due { background: #111827; }
-  .tag            { background: #312e81; color: #c7d2fe; }
-  .tag:nth-child(2n) { background: #064e3b; color: #a7f3d0; }
-  .tag:nth-child(3n) { background: #78350f; color: #fde68a; }
+.creator,
+.creator-date {
+  font-size: 14px;
+  margin: 0;
 }

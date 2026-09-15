@@ -1,49 +1,33 @@
-import { tasks } from "./database.js";
+import { request } from "./api.js";
 
-const myTasks = [...tasks];
-
-export const getTasks = () => ({
-  data: myTasks,
-  status: 200,
-  message: "get tasks successfully.",
-});
-
-export const addTask = (task = {}) => {
-  const task = myTasks.find((t) => t.id == task.id);
-  if (!task) {
-    myTasks.push({ ...task, createdAt: new Date() });
-    return { status: 201, message: "add task successfully." };
-  }
-  return {
-    status: 400,
-    message: "this task already exists.",
-  };
+export const getTasks = async () => {
+  const result = await request("tasks");
+  return result;
 };
 
-export const deleteTask = (taskId = "") => {
-  const taskIndex = myTasks.findIndex((e) => e.id == taskId);
-  if (taskIndex == -1)
-    return {
-      status: 400,
-      message: "this task is not found.",
-    };
-  myTasks.splice(taskIndex, 1);
-  return { status: 200, message: "delete task successfully." };
+// const t = await getTasks();
+// console.log(t);
+
+export const addTask = async (task = {}) => {
+  const result = await request("tasks", "POST", task);
+  return result;
 };
 
-export const updateTask = (taskId = "", data = {}) => {
-  for (let i in myTasks) {
-    if (myTasks[i].id == taskId) {
-      myTasks[i] = { ...myTasks[i], ...data };
-      return {
-        data: myTasks[i],
-        status: 200,
-        message: "update task successfully.",
-      };
-    }
-  }
-  return {
-    status: 400,
-    message: "this task is not found.",
-  };
+// const x = await addTask({title: "one"});
+// console.log(x);
+
+export const deleteTask = async (taskId = "") => {
+  const result = await request(`tasks/${taskId}`, "DELETE");
+  return result;
 };
+
+// const y = await deleteTask("YDHws_bzdLk");
+// console.log(y);
+
+export const updateTask = async (taskId = "", data = {}) => {
+  const result = await request(`tasks/${taskId}`, "PUT", data);
+  return result;
+};
+
+// const z = await updateTask("YDHws_bzdLk", { title: "two" });
+// console.log(z);

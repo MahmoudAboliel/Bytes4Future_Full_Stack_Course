@@ -1,0 +1,43 @@
+<div class="card task-card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <div>
+                  <span class="badge text-bg-warning">ui</span>
+                  <span class="badge text-bg-warning">design</span>
+                  <span class="badge text-bg-warning">figma</span>
+                </div>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card’s content.
+                </p>
+                <div>
+                  <span class="badge text-bg-light text-info">in progress</span>
+                  <span class="badge text-bg-light text-danger">high</span>
+                </div>
+                <div class="badge text-bg-secondary">due date: 25 sep 2026</div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p>creator: Mahmoud</p>
+                    <p>13 sep</p>
+                  </div>
+                  <div class="">
+                    <img
+                      class="user-image"
+                      src="../images/image_1.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="../images/image_2.jpg"
+                      alt=""
+                    />
+                    <img
+                      class="user-image"
+                      src="../images/image_2.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
