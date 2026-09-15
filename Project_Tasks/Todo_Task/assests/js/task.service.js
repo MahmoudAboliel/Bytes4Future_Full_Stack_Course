@@ -9,8 +9,15 @@ export const getTasks = () => ({
 });
 
 export const addTask = (task = {}) => {
-  myTasks.push(task);
-  return { status: 201, message: "add task successfully." };
+  const task = myTasks.find((t) => t.id == task.id);
+  if (!task) {
+    myTasks.push({ ...task, createdAt: new Date() });
+    return { status: 201, message: "add task successfully." };
+  }
+  return {
+    status: 400,
+    message: "this task already exists.",
+  };
 };
 
 export const deleteTask = (taskId = "") => {

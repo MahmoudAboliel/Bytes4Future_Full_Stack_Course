@@ -35,6 +35,7 @@ export const updateUser = (userId = "", data = {}) => {
       };
     }
   }
+  
   return {
     status: 400,
     message: "this user is not found.",

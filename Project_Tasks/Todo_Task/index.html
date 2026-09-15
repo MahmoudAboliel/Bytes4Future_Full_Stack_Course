@@ -1,18 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assests/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assests/css/style.css" />
     <title>Todo Task With JS</title>
-</head>
-<body>
+  </head>
+  <body>
+    <article class="task-card" data-status="in_progress" data-priority="high">
+      <!-- الشريط الجانبي الملوّن حسب الأولوية -->
+      <span class="task-card__priority-bar" aria-hidden="true"></span>
+
+      <!-- الرأس: العنوان + القائمة -->
+      <header class="task-card__header">
+        <div class="task-card__title-wrap">
+          <span class="task-card__status-dot" title="قيد التنفيذ"></span>
+          <h3 class="task-card__title">تصميم واجهة الصفحة الرئيسية</h3>
+        </div>
+
+        <button class="task-card__menu" aria-label="خيارات المهمة">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <circle cx="12" cy="5" r="1.8" />
+            <circle cx="12" cy="12" r="1.8" />
+            <circle cx="12" cy="19" r="1.8" />
+          </svg>
+        </button>
+      </header>
+
+      <!-- الوصف -->
+      <p class="task-card__description">
+        إنشاء تصميم UI/UX متجاوب للصفحة الرئيسية مع دعم الوضع الليلي.
+      </p>
+
+      <!-- الوسوم -->
+      <ul class="task-card__tags">
+        <li class="tag">ui</li>
+        <li class="tag">design</li>
+        <li class="tag">figma</li>
+      </ul>
+
+      <!-- شريط الحالة والأولوية -->
+      <div class="task-card__badges">
+        <span class="badge badge--status">🔄 قيد التنفيذ</span>
+        <span class="badge badge--priority">🔥 عالية</span>
+      </div>
+
+      <!-- تاريخ الاستحقاق -->
+      <div class="task-card__due">
+        <svg viewBox="0 0 24 24" width="14" height="14">
+          <rect x="3" y="5" width="18" height="16" rx="2" />
+          <path d="M8 3v4M16 3v4M3 10h18" />
+        </svg>
+        <span>الاستحقاق: 25 سبتمبر 2026</span>
+      </div>
+
+      <!-- الفوتر: المعيَّنون + المنشئ + التواريخ -->
+      <footer class="task-card__footer">
+        <div class="task-card__assignees" title="المسؤولون">
+          <img src="https://i.pravatar.cc/40?u=mahmoud" alt="Mahmoud Abulail" />
+          <img src="https://i.pravatar.cc/40?u=sara" alt="Sara Al-Ahmad" />
+        </div>
+
+        <div class="task-card__meta">
+          <span title="المُنشئ">👤 أنشأها: محمود</span>
+          <span title="آخر تحديث">✏️ 13 سبتمبر</span>
+        </div>
+      </footer>
+    </article>
     <div>
-        <h1>users</h1>
-        <div id="users"></div>
-        <h1>tasks</h1>
-        <div id="tasks"></div>
+      <h1>users</h1>
+      <div id="users"></div>
+      <h1>tasks</h1>
+      <div id="tasks"></div>
     </div>
     <script type="module" src="./assests/js/main.js"></script>
-</body>
+  </body>
 </html>
