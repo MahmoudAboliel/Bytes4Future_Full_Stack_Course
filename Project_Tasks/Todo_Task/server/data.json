@@ -1,8 +1,13 @@
 {
   "users": [
     {
-      "name": "Ahmad Ali",
-      "id": "u-001"
+      "id": "u-001",
+      "name": "Mahmoud Abulail",
+      "email": "mahmoud.abulail@example.com",
+      "avatarUrl": "./assests/images/patient_12.jpg",
+      "role": "owner",
+      "createdAt": "2025-01-10T08:00:00Z",
+      "updatedAt": null
     },
     {
       "id": "u-002",

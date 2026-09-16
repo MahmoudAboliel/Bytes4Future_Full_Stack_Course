@@ -8,6 +8,14 @@ export const getUsers = async () => {
 // const u = await getUsers();
 // console.log(u);
 
+export const getUserById = async (userId="") => {
+  const result = await request(`users/${userId}`);
+  return result;
+};
+
+const i = await getUserById("u-001");
+console.log(i);
+
 export const addUser = async (user = {}) => {
   const users = await getUsers();
   const checkUser = users.data?.find(u => u.email == user.email);

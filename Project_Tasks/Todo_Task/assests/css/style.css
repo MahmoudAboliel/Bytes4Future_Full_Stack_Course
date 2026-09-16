@@ -18,7 +18,19 @@ body {
 
 .task-card {
     width: 100%;
-    border-left: 4px solid red;
+    border-left: 4px solid;
+}
+/* urgent high medium low */
+.task-card.high {
+  border-color: #dc3545;
+}
+.task-card.medium {
+  border-color: #fd7e14;
+}
+.task-card.low,
+.task-card.urgent
+ {
+  border-color: #0dcaf0;
 }
 .card-text {
   font-size: 16px;
@@ -40,9 +52,13 @@ body {
 }
 .user-image:hover {
   z-index: 100;
+  /* width: 100px;
+  height: 100px;
+  position: absolute; */
 }
 .creator,
 .creator-date {
   font-size: 14px;
   margin: 0;
+  color: gray;
 }
