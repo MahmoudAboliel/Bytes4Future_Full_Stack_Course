@@ -1,8 +1,8 @@
-import { request } from "./api.js";
+import { request } from "../utils/api.js";
 
 export const getUsers = async () => {
   const result = await request("users");
-  return result;
+  return result.data;
 };
 
 // const u = await getUsers();
@@ -10,11 +10,11 @@ export const getUsers = async () => {
 
 export const getUserById = async (userId="") => {
   const result = await request(`users/${userId}`);
-  return result;
+  return result.data;
 };
 
-const i = await getUserById("u-001");
-console.log(i);
+// const i = await getUserById("u-001");
+// console.log(i);
 
 export const addUser = async (user = {}) => {
   const users = await getUsers();

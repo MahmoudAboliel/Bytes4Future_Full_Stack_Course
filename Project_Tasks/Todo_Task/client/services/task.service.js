@@ -1,8 +1,8 @@
-import { request } from "./api.js";
+import { request } from "../utils/api.js";
 
 export const getTasks = async () => {
   const result = await request("tasks");
-  return result;
+  return result.data;
 };
 
 // const t = await getTasks();

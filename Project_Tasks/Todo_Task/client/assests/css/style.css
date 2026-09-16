@@ -10,26 +10,20 @@ body {
   font-variation-settings:
     "wdth" 100;
 }
-
-.container-sections {
-  /* border: 1px solid #e3e3e3; */
-  min-height: calc(100dvh - 78px);
-} 
-
 .task-card {
-    width: 100%;
+    /* width: 100%;
+    min-width: 250px; */
     border-left: 4px solid;
 }
 /* urgent high medium low */
-.task-card.high {
+.task-card.high,
+.task-card.urgent {
   border-color: #dc3545;
 }
 .task-card.medium {
   border-color: #fd7e14;
 }
-.task-card.low,
-.task-card.urgent
- {
+.task-card.low {
   border-color: #0dcaf0;
 }
 .card-text {
@@ -42,7 +36,7 @@ body {
     border-radius: 50%;
     padding: 0;
     margin: 0;
-    border: 3px solid #d3d3d3;
+    border: 2px solid #a3a3a3;
     position: relative;
     z-index: 1;
     transition: all .3s ease-in-out;
@@ -61,4 +55,8 @@ body {
   font-size: 14px;
   margin: 0;
   color: gray;
+}
+
+.dropdown-item:hover {
+  background-color: #d3d3d3;
 }

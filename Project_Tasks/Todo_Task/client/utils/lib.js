@@ -1,6 +1,11 @@
+import { getUserById } from "../services/user.service.js";
+
+const actions = ["backlog", "in_progress", "done", "archived", "delete"];
+
 export const createCard = (task = {}) => {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add(
+    "col",
     "card",
     "task-card",
     task.priority,
@@ -13,11 +18,38 @@ export const createCard = (task = {}) => {
 
   // header
   const cardHeader = document.createElement("div");
+  cardHeader.classList.add("d-flex", "justify-content-between");
   const h5 = document.createElement("h5");
   h5.classList.add("card-title");
   h5.innerHTML = task.title;
   // dropdown and append it
-  cardHeader.append(h5);
+  const dropdown = document.createElement("div");
+  dropdown.classList.add("dropdown");
+  dropdown.style.cursor = "pointer";
+  const editSpan = document.createElement("span");
+  editSpan.classList.add("dropdown-toggle");
+  editSpan.setAttribute("data-bs-toggle", "dropdown");
+  editSpan.setAttribute("aria-expanded", "false");
+  editSpan.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+      </svg> 
+  `;
+  const actionsUl = document.createElement("ul");
+  actionsUl.classList.add("dropdown-menu");
+  actions.map((action) => {
+    const li = document.createElement("li");
+    li.classList.add("dropdown-item");
+    li.style.cursor = "pointer";
+    li.style;
+    li.innerHTML = action;
+    li.onclick = async () => {
+      console.log(action);
+    };
+    actionsUl.append(li);
+  });
+  dropdown.append(editSpan, actionsUl);
+  cardHeader.append(h5, dropdown);
 
   // tags
   const tagsDiv = document.createElement("div");
@@ -92,4 +124,20 @@ export const createCard = (task = {}) => {
   );
 
   return cardDiv;
+};
+
+export const initializeTask = async (task = {}) => {
+  const creator = await getUserById(task.creatorId);
+
+  const assigneeUsers = [];
+  for (let i in task.assigneeIds) {
+    const init = await getUserById(task.assigneeIds[i]);
+    assigneeUsers.push(init);
+  }
+
+  return {
+    ...task,
+    creatorId: creator,
+    assigneeIds: assigneeUsers,
+  };
 };
