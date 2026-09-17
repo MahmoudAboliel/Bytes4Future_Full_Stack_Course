@@ -20,7 +20,7 @@
   </head>
   <body class="">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid shadow pb-2">
+      <div class="container-fluid shadow-sm pb-2">
         <a class="navbar-brand" href="./index.html">TodoList</a>
         <button
           class="navbar-toggler"
@@ -55,21 +55,96 @@
               Search
             </button>
           </form>
+
+          <!-- Button trigger modal -->
+          <button
+            class="btn btn-outline-info m-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Add Task
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Modal title
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body" style="height: 100vh;">
+                  <form id="addTask">
+                    <!-- form display here -->
+                  </form>
+                  <!-- <select name="" id=""></select> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div class="card p-5 mb-3 mt-3">
-        <h4 class="m-0 text-center">Filter section</h4>
-      </div>
-      <div class="container w-100 row-cols-1 row-cols-sm-2 row-cols-md-4">
-        <div id="content-tasks" class="row gap-3">
-          <!-- tasks will render here -->
+    <div class="wrapper-container">
+      <div class="d-flex gap-3 justify-content-center">
+        <div class="card">
+          <div class="card-header">
+            <h5>Backlog</h5>
+          </div>
+          <div id="backlog-section" class="card-body d-flex flex-column gap-3">
+            <!-- tasks here -->
+          </div>
         </div>
 
+        <div class="card">
+          <div class="card-header">
+            <h5>In Porgress</h5>
+          </div>
+          <div
+            id="in-progress-section"
+            class="card-body d-flex flex-column gap-3"
+          >
+            <!-- tasks here -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h5>Done</h5>
+          </div>
+          <div id="done-section" class="card-body d-flex flex-column gap-3">
+            <!-- tasks here -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h5>Archived</h5>
+          </div>
+          <div id="archived-section" class="card-body d-flex flex-column gap-3">
+            <!-- tasks here -->
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card p-4 mt-3">
+
+    <div class="card p-2 mt-2">
       <h4 class="m-0 text-center">Footer section</h4>
     </div>
     <script

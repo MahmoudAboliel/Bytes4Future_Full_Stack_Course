@@ -11,25 +11,23 @@ export const request = async (endPoint = "", method = "GET", data) => {
     });
 
     if (!res.ok) {
-      return {
-        status: res.status,
-        message:
-          res.status == 404
-            ? "not found."
-            : res.status == 400
-              ? "bad request."
-              : res.status == 403
-                ? "access denied."
-                : res.status == 500
-                  ? "server error."
-                  : "something went wrong.",
-      };
+      throw new Error(
+        res.status == 404
+          ? "not found."
+          : res.status == 400
+            ? "bad request."
+            : res.status == 403
+              ? "access denied."
+              : res.status == 500
+                ? "server error."
+                : "something went wrong.",
+      );
     }
 
     const result = await res.json();
     return { status: res.status, data: result, message: "done successfully." };
-  } catch (er) {
-    console.error("server error:", er);
+  } catch (error) {
+    console.error(error.message);
   }
 };
 

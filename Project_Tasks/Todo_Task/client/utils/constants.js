@@ -1,0 +1,59 @@
+export const actions = ["backlog", "in_progress", "done", "archived", "delete"];
+export const status = ["backlog", "in_progress", "done", "archived"];
+export const priority = ["urgent", "high", "medium", "low"];
+
+export const taskFields = (usersRes = []) => [
+  {
+    type: "text",
+    name: "title",
+    label: "Task title",
+    required: true,
+  },
+  {
+    type: "textarea",
+    name: "description",
+    label: "Task description",
+    rows: 4,
+    required: true,
+  },
+  {
+    name: "status",
+    type: "select",
+    label: "Task status",
+    required: true,
+    options: status.map((item) => ({
+      label: item.charAt(0).toUpperCase() + item.slice(1),
+      value: item,
+    })),
+  },
+  {
+    name: "priority",
+    label: "Task priority",
+    type: "select",
+    required: true,
+    options: priority.map((item) => ({
+      label: item.charAt(0).toUpperCase() + item.slice(1),
+      value: item,
+    })),
+  },
+  {
+    name: "assigneeIds",
+    label: "Assignee Users",
+    type: "select",
+    multiple: true,
+    size: 5, // اختياري: عرض 5 صفوف
+    options: usersRes.map((user) => ({ label: user.name, value: user.id })),
+  },
+  {
+    name: "tags",
+    label: "Task tags",
+    type: "text",
+    placeholder: "html, css, js",
+  },
+  {
+    name: "dueDate",
+    label: "Task due date",
+    type: "date",
+    required: true,
+  },
+];

@@ -13,7 +13,7 @@ export const getUserById = async (userId="") => {
   return result.data;
 };
 
-// const i = await getUserById("u-001");
+// const i = await getUserById("u-002");
 // console.log(i);
 
 export const addUser = async (user = {}) => {
@@ -45,5 +45,13 @@ export const updateUser = async (userId = "", data = {}) => {
   const result = await request(`users/${userId}`, "PUT", data);
   return result;
 };
-// const z = await updateUser("i33PhyqfD5E", { name: "ali mohamd" });
+// const z = await updateUser("u-001", {
+//   id: "u-001",
+//   name: "Mahmoud Abulail",
+//   email: "mahmoud.abulail@example.com",
+//   avatarUrl: "./assests/images/patient_12.jpg",
+//   role: "owner",
+//   createdAt: "2025-01-10T08:00:00Z",
+//   updatedAt: null,
+// });
 // console.log(z);

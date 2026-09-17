@@ -1,15 +1,10 @@
 import { getUserById } from "../services/user.service.js";
-
-const actions = ["backlog", "in_progress", "done", "archived", "delete"];
+import { updateTask, deleteTask } from "../services/task.service.js";
+import { actions } from "./constants.js";
 
 export const createCard = (task = {}) => {
   const cardDiv = document.createElement("div");
-  cardDiv.classList.add(
-    "col",
-    "card",
-    "task-card",
-    task.priority,
-  );
+  cardDiv.classList.add("card", "task-card", task.priority);
   // urgent high medium low
   // append everything inside it
   const cardBody = document.createElement("div");
@@ -38,15 +33,24 @@ export const createCard = (task = {}) => {
   const actionsUl = document.createElement("ul");
   actionsUl.classList.add("dropdown-menu");
   actions.map((action) => {
-    const li = document.createElement("li");
-    li.classList.add("dropdown-item");
-    li.style.cursor = "pointer";
-    li.style;
-    li.innerHTML = action;
-    li.onclick = async () => {
-      console.log(action);
-    };
-    actionsUl.append(li);
+    if (task.status != action) {
+      const li = document.createElement("li");
+      li.classList.add("dropdown-item");
+      li.style.cursor = "pointer";
+      li.style.fontSize = "14px";
+      li.innerHTML = action;
+      li.onclick = async () => {
+        if (action != "delete") {
+          await updateTask(task.id, {
+            ...task,
+            creatorId: task.creatorId.id,
+            assigneeIds: task.assigneeIds.map((u) => u.id),
+            status: action,
+          });
+        }
+      };
+      actionsUl.append(li);
+    }
   });
   dropdown.append(editSpan, actionsUl);
   cardHeader.append(h5, dropdown);
@@ -66,21 +70,36 @@ export const createCard = (task = {}) => {
   description.classList.add("card-text");
   description.innerHTML = task.description;
 
-  // status
+  // status & priority
   const statusDiv = document.createElement("div");
   statusDiv.classList.add("d-flex", "gap-1");
   const status = document.createElement("span");
-  status.classList.add("badge", "text-bg-info", "text-light");
+  status.classList.add(
+    "badge",
+    `text-bg-${task.status == "backlog" ? "info" : task.status == "in_progress" ? "success" : "secondary"}`,
+    "text-light",
+  );
   status.innerHTML = task.status;
   const priority = document.createElement("span");
-  priority.classList.add("badge", "text-bg-danger", "text-light");
-  priority.innerHTML = task.priority;
+  priority.classList.add(
+    "badge",
+    `text-bg-${task.priority == "low" ? "info" : task.priority == "medium" ? "warning" : "danger"}`,
+    "text-light",
+  );
+  priority.innerHTML = `${task.priority == "low" ? "🌱" : task.priority == "medium" ? "⚡" : "🔥"}${task.priority}`;
   statusDiv.append(status, priority);
 
   // due date
   const dueDate = document.createElement("div");
   dueDate.classList.add("badge", "text-bg-secondary");
-  dueDate.innerHTML = `due date: ${new Date(task.dueDate).toDateString()}`;
+  dueDate.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+    <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
+    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
+  </svg>
+  due date: ${new Date(task.dueDate).toDateString()}
+  `;
 
   // hr
   const hr = document.createElement("hr");
