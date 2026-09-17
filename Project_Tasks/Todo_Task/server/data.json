@@ -81,7 +81,7 @@
         "auth",
         "nodejs"
       ],
-      "status": "backlog",
+      "status": "archived",
       "priority": "urgent",
       "dueDate": "2026-09-18T12:00:00Z",
       "completedAt": null,
@@ -121,7 +121,7 @@
         "docs",
         "swagger"
       ],
-      "status": "backlog",
+      "status": "archived",
       "priority": "low",
       "dueDate": "2026-09-30T20:00:00Z",
       "completedAt": null,
@@ -351,6 +351,26 @@
       "updatedAt": null,
       "completedAt": null,
       "id": "46ljKNpDEUI"
+    },
+    {
+      "title": "asdas",
+      "description": "asdasd",
+      "status": "backlog",
+      "priority": null,
+      "assigneeIds": [
+        "u-003",
+        "u-004",
+        "u-005"
+      ],
+      "tags": [
+        "asda"
+      ],
+      "dueDate": "2026-09-16",
+      "creatorId": "u-001",
+      "createdAt": "2026-09-17T09:18:57.150Z",
+      "updatedAt": null,
+      "completedAt": null,
+      "id": "YL00ZpZhjZc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
