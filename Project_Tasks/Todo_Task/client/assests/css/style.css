@@ -33,6 +33,7 @@ body {
 }
 .wrapper-container {
   overflow-x: auto;
+  height: calc(100vh - 125px);
 }
 .wrapper-container > div:first-child {
   width: 1486px;
@@ -216,4 +217,3 @@ body {
   background: #3b82f6 linear-gradient(0deg, #3b82f6, #3b82f6);
   color: #fff;
 }
-
