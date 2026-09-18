@@ -17,16 +17,6 @@ export const taskFields = (usersRes = []) => [
     required: true,
   },
   {
-    name: "status",
-    type: "select",
-    label: "Task status",
-    required: true,
-    options: status.map((item) => ({
-      label: item.charAt(0).toUpperCase() + item.slice(1),
-      value: item,
-    })),
-  },
-  {
     name: "priority",
     label: "Task priority",
     type: "select",

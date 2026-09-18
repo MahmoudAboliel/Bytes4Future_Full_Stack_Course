@@ -44,7 +44,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: var(--bg-color);
   min-height: 200vh;
 }
@@ -56,19 +56,19 @@ a {
 }
 
 .orange-blur {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--bg-blure1), var(--bg-blure2));
-    border-radius: 50%;
-    filter: blur(150px);
-    -webkit-filter: blur(150px);
-    z-index: 0;
-    pointer-events: none; /* يمنع التفاعل مع العنصر */
-    animation: pulse 4s ease-in-out infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--bg-blure1), var(--bg-blure2));
+  border-radius: 50%;
+  filter: blur(150px);
+  -webkit-filter: blur(150px);
+  z-index: 0;
+  pointer-events: none; /* يمنع التفاعل مع العنصر */
+  animation: pulse 4s ease-in-out infinite;
 }
 
 /* Start Header */
@@ -111,7 +111,7 @@ header .links ul li {
 header .links ul li a {
   color: var(--text-secondery);
   font-size: 14px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   position: relative;
 }
 header .links ul li a:hover {
@@ -124,7 +124,7 @@ header .links ul li a::before {
   height: 2px;
   width: 0;
   background-color: var(--text-color);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 header .links ul li a:hover::before {
   width: 100%;
@@ -144,7 +144,8 @@ header button {
   animation-timing-function: ease-in-out;
 }
 @keyframes popup {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(4px);
   }
   50% {
@@ -157,7 +158,7 @@ header button {
 #home {
   color: var(--text-color);
   padding: 50px 30px;
-  display: grid; 
+  display: grid;
   gap: 40px;
   /* min-height: calc(100dvh - 58px); */
 }
@@ -248,13 +249,12 @@ header button {
   background: #1e1e1e;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 /* Window Header */
 .window-header {
   display: sticky;
-  top: 0
+  top: 0;
 }
 .window-header > div {
   height: 42px;
@@ -297,17 +297,24 @@ pre {
   font-size: 14px !important;
 }
 code {
-  font-family:
-    "Fira Code",
-    "Cascadia Code",
-    Consolas,
-    monospace;
+  font-family: "Fira Code", "Cascadia Code", Consolas, monospace;
 }
 #home .cursor {
-  display: block;
+  position: absolute;
+  top: 480px;
+  left: 20px;
   width: 8px;
-  height: 12px;
+  height: 16px;
   background-color: var(--primary-color);
+  animation: openClose .8s ease-in-out infinite;
+}
+@keyframes openClose {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 /* End Home Section */
 
@@ -347,7 +354,7 @@ code {
   padding: 14px;
   background-color: #27272a73;
   border-radius: 12px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 @media (max-width: 780px) {
   #services .service-card {
@@ -412,7 +419,7 @@ code {
   padding: 14px;
   background-color: #27272a73;
   border-radius: 12px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 #work .work-card:hover {
   transform: translateY(-4px);
@@ -455,7 +462,7 @@ code {
   font-weight: 100;
   border-radius: 20px;
   transform: scale(0.9);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 #work .work-card .work-links span:hover {
   text-decoration: underline;

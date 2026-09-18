@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
 *::-webkit-scrollbar {
   width: 7px; /* Width of vertical scrollbars */
   height: 7px; /* Height of horizontal scrollbars */
@@ -68,6 +71,16 @@ body {
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
+.assignee-etails {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  bottom: 75px;
+  background: #fff;
+}
+.assignee-etails.hidden {
+  display: none;
+}
 .user-image:not(:first-child) {
   margin-left: -30px;
 }
@@ -76,6 +89,9 @@ body {
   /* width: 100px;
   height: 100px;
   position: absolute; */
+}
+.user-image:hover .assignee-etails {
+  display: block;
 }
 .creator,
 .creator-date {
@@ -92,13 +108,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 400px;
-  margin: 0 auto;
-  border: 1px solid #cfcfcf;
-  padding: 25px;
+  /* width: 400px; */
+  /* margin: 0 auto; */
+  /* border: 1px solid #cfcfcf; */
+  /* padding: 25px; */
   border-radius: 16px;
   background: #ffffff;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); */
 }
 #addTask .group-field {
   display: flex;
@@ -122,8 +138,10 @@ body {
 }
 #addTask .group-field input:focus,
 #addTask .group-field textarea:focus {
-  border-color: #3f3f3f;
-  box-shadow: 0 0 0 3px rgba(63, 63, 63, 0.15);
+  /* border-color: #3f3f3f; */
+  /* box-shadow: 0 0 0 3px rgba(63, 63, 63, 0.15); */
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
   background: #fff;
 }
 #addTask .radio-group {
@@ -172,13 +190,15 @@ body {
   font-family: inherit;
   color: #111827;
   cursor: pointer;
-  transition: border-color .15s, box-shadow .15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .group-field select:focus {
   outline: none;
   border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,.18);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
 }
 
 /* multiple → يبدو كصندوق قائمة */
@@ -196,3 +216,4 @@ body {
   background: #3b82f6 linear-gradient(0deg, #3b82f6, #3b82f6);
   color: #fff;
 }
+

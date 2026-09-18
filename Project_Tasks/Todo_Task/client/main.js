@@ -10,7 +10,7 @@ const doneSection = document.getElementById("done-section");
 const archivedSection = document.getElementById("archived-section");
 
 const tasksRes = await getTasks();
-const usersRes = await getUsers()
+const usersRes = await getUsers();
 
 for (let i in tasksRes) {
   const editTask = await initializeTask(tasksRes[i]);
@@ -25,17 +25,16 @@ tasksRes.map((task) => {
   else archivedSection.append(createCard(task));
 });
 
-
 const onSubmit = async (data = {}) => {
   data["creatorId"] = "u-001";
   data["createdAt"] = new Date();
+  data["status"] = "backlog";
   data["updatedAt"] = null;
   data["completedAt"] = null;
   data["tags"] = data["tags"]?.split(",").map((t) => t.trim());
 
   const result = await addTask(data);
-  console.log(result)
-
+  console.log(result);
 };
 
 renderForm({

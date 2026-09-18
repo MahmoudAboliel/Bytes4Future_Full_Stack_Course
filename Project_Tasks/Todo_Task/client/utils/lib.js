@@ -70,6 +70,37 @@ export const createCard = (task = {}) => {
   description.classList.add("card-text");
   description.innerHTML = task.description;
 
+  const accordionDiv = document.createElement("div");
+  accordionDiv.classList.add("accordion", "accordion-flush");
+  accordionDiv.style.margin = "8px 0";
+  accordionDiv.id = `accordionExample`;
+  accordionDiv.innerHTML = `
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${task.id}" aria-expanded="false" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne${task.id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo${task.id}" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo${task.id}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  `;
+
   // status & priority
   const statusDiv = document.createElement("div");
   statusDiv.classList.add("d-flex", "gap-1");
@@ -121,11 +152,32 @@ export const createCard = (task = {}) => {
   // users image append to footer
   const imgsDiv = document.createElement("div");
   task.assigneeIds.map((user) => {
+    const fullDetails = document.createElement("div");
+    fullDetails.classList.add("assignee-etails", "hidden");
+    fullDetails.innerHTML = `
+      <div style="position: relative; width: fit-content; display: flex; align-items: center; gap: 8px; padding: 10px; box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3); border-radius: 8px;">
+        <img src="${user.avatarUrl}" style="width: 60px; height: 60px; border-radius: 50%;" alt="">
+        <div>
+          <h5 style="margin: 0;">${user.name}</h5>
+          <p style="margin: 0; color: gray;">${user.email}</p>
+        </div>
+      </div>
+    `;
+
     const img = document.createElement("img");
     img.classList.add("user-image");
     img.src = user.avatarUrl;
     img.alt = user.avatarUrl.split("/").at(-1);
-    imgsDiv.append(img);
+
+    img.addEventListener("mouseenter", () => {
+      fullDetails.classList.remove("hidden")
+    });
+    img.addEventListener("mouseleave", () => {
+      fullDetails.classList.add("hidden")
+    });
+    
+    imgsDiv.append(img, fullDetails);
+
   });
 
   cardFooter.append(creatorDiv, imgsDiv);
@@ -136,6 +188,7 @@ export const createCard = (task = {}) => {
     cardHeader,
     tagsDiv,
     description,
+    // accordionDiv,
     statusDiv,
     dueDate,
     hr,

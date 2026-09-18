@@ -1,0 +1,555 @@
+/* ============================================================
+ *  1) المتغيرات العامة
+ * ============================================================ */
+:root {
+  /* الألوان الأساسية */
+  --table-bg: #ffffff;
+  --table-bg-alt: #fafbfc;
+  --table-border: #e5e7eb;
+  --table-border-strong: #d1d5db;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+
+  --row-hover: #f9fafb;
+  --row-selected: #eff6ff;
+
+  /* الظلال */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.18);
+
+  /* الحدود */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* المسافات */
+  --cell-px: 16px;
+  --cell-py: 14px;
+
+  /* الخطوط */
+  --font-family:
+    "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-size-base: 14px;
+  --font-size-sm: 13px;
+  --font-size-xs: 12px;
+}
+
+/* ============================================================
+ *  2) حاوية الجدول (اختياري: غلّف الجدول في <div class="table-wrap">)
+ * ============================================================ */
+.table-wrap {
+  margin: 20px 0;
+  width: 100%;
+  overflow-x: auto;
+  background: var(--table-bg);
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* إذا لم يكن هناك wrapper، نطبق التنسيق مباشرة على table */
+/* table[id] {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--table-bg);
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  table-layout: auto;
+} */
+
+/* ============================================================
+ *  3) الرأس (thead)
+ * ============================================================ */
+table[id] thead {
+  background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+table[id] thead tr {
+  border-bottom: 2px solid var(--table-border-strong);
+}
+
+table[id] thead th {
+  padding: var(--cell-py) var(--cell-px);
+  text-align: start;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+}
+
+/* فاصل خفيف بين الأعمدة */
+table[id] thead th:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  top: 30%;
+  height: 40%;
+  width: 1px;
+  background: var(--table-border);
+}
+
+/* أول/آخر خلية بحواف دائرية */
+table[id] thead th:first-child {
+  border-start-start-radius: var(--radius-lg);
+}
+table[id] thead th:last-child {
+  border-start-end-radius: var(--radius-lg);
+}
+
+/* ============================================================
+ *  4) الصفوف (tbody)
+ * ============================================================ */
+table[id] tbody tr {
+  background: var(--table-bg);
+  transition: background 0.15s ease;
+}
+
+/* خطوط فاصلة بين الصفوف */
+table[id] tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--table-border);
+}
+
+/* تأثير عند المرور */
+table[id] tbody tr:hover {
+  background: var(--row-hover);
+}
+
+/* شريط جانبي ملوّن عند المرور */
+table[id] tbody tr:hover td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* خلايا */
+table[id] tbody td {
+  padding: var(--cell-py) var(--cell-px);
+  vertical-align: middle;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* آخر صف بحواف دائرية */
+table[id] tbody tr:last-child td:first-child {
+  border-end-start-radius: var(--radius-lg);
+}
+table[id] tbody tr:last-child td:last-child {
+  border-end-end-radius: var(--radius-lg);
+}
+
+/* ============================================================
+ *  5) الصور (avatar)
+ * ============================================================ */
+table[id] tbody td img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: block;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+table[id] tbody td img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  position: relative;
+}
+
+/* إذا كانت الصورة داخل خلية مخصصة للأفاتار */
+table[id] tbody td[data-key="avatarUrl"] {
+  width: 64px;
+  text-align: center;
+}
+
+/* ============================================================
+ *  6) مجموعة الأزرار (actions-group)
+ * ============================================================ */
+.actions-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.actions-group > * {
+  /* كل زر أو أيقونة داخل المجموعة */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.actions-group > *:hover {
+  background: #f3f4f6;
+  color: var(--text-primary);
+  border-color: var(--table-border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.actions-group > *:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.actions-group > *:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-color: var(--accent);
+}
+
+/* تعطيل زر */
+.actions-group > *:disabled,
+.actions-group > *[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* لو كان الزر نصّياً وليس أيقونة فقط */
+.actions-group > *.btn-text {
+  width: auto;
+  padding: 0 12px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* زر أساسي (لون بارز) */
+.actions-group > *.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.actions-group > *.primary:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+/* زر خطر (حذف) */
+.actions-group > *.danger {
+  color: #dc2626;
+  border-color: #fecaca;
+}
+.actions-group > *.danger:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+/* زر نجاح */
+.actions-group > *.success {
+  color: #059669;
+  border-color: #a7f3d0;
+}
+.actions-group > *.success:hover {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+  color: #047857;
+}
+
+/* ============================================================
+ *  7) حقل البحث
+ * ============================================================ */
+input[type="search"][name="search"] {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  padding: 10px 14px 10px 40px;
+  /* margin: 0 0 16px; */
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-md);
+  background: #fff
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>")
+    no-repeat 14px center;
+  background-size: 18px 18px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"][name="search"]::placeholder {
+  color: var(--text-muted);
+}
+
+input[type="search"][name="search"]:hover {
+  border-color: var(--table-border-strong);
+}
+
+input[type="search"][name="search"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-focus);
+}
+
+/* إخفاء زر المسح الافتراضي على WebKit */
+input[type="search"][name="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+/* ============================================================
+ *  8) حالة "لا توجد بيانات"
+ * ============================================================ */
+table[id] tbody td[colspan],
+table[id] tbody tr:only-child td:only-child {
+  padding: 48px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+  font-style: italic;
+}
+
+/* ============================================================
+ *  9) الاستجابة للشاشات الصغيرة
+ * ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --cell-px: 10px;
+    --cell-py: 10px;
+    --font-size-base: 13px;
+    --font-size-sm: 12px;
+  }
+
+  table[id] thead th {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+  }
+
+  table[id] tbody td img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .actions-group > * {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  input[type="search"][name="search"] {
+    max-width: 100%;
+  }
+}
+
+/* شاشات صغيرة جداً → جعل الجدول قابلاً للتمرير */
+@media (max-width: 480px) {
+  table[id] {
+    font-size: 12px;
+  }
+
+  table[id] thead th,
+  table[id] tbody td {
+    padding: 8px 6px;
+  }
+}
+
+/* ============================================================
+ * 10) الوضع الليلي (تلقائي)
+ * ============================================================ */
+@media (prefers-color-scheme: light) {
+  :root {
+    --table-bg: #1f2937;
+    --table-bg-alt: #111827;
+    --table-border: #374151;
+    --table-border-strong: #4b5563;
+
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+
+    --accent: #60a5fa;
+    --accent-soft: rgba(96, 165, 250, 0.15);
+
+    --row-hover: #111827;
+    --row-selected: #1e3a5f;
+  }
+
+  table[id] thead {
+    background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+  }
+
+  .actions-group > * {
+    background: #374151;
+    color: #d1d5db;
+    border-color: #4b5563;
+  }
+  .actions-group > *:hover {
+    background: #4b5563;
+    color: #f9fafb;
+  }
+
+  .actions-group > *.danger {
+    background: #374151;
+    color: #f87171;
+    border-color: #7f1d1d;
+  }
+  .actions-group > *.danger:hover {
+    background: #7f1d1d;
+    color: #fecaca;
+  }
+
+  input[type="search"][name="search"] {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  input[type="search"][name="search"]:hover {
+    border-color: #4b5563;
+  }
+
+  table[id] tbody td img {
+    border-color: #374151;
+  }
+}
+
+/* ============================================================
+ * 11) حركات دخول أنيقة
+ * ============================================================ */
+@keyframes rowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+table[id] tbody tr {
+  animation: rowFadeIn 0.25s ease both;
+}
+
+/* تأخير متتالي للصفوف (يظهر الصفوف تلو الأخرى) */
+table[id] tbody tr:nth-child(1) {
+  animation-delay: 0s;
+}
+table[id] tbody tr:nth-child(2) {
+  animation-delay: 0.03s;
+}
+table[id] tbody tr:nth-child(3) {
+  animation-delay: 0.06s;
+}
+table[id] tbody tr:nth-child(4) {
+  animation-delay: 0.09s;
+}
+table[id] tbody tr:nth-child(5) {
+  animation-delay: 0.12s;
+}
+table[id] tbody tr:nth-child(6) {
+  animation-delay: 0.15s;
+}
+table[id] tbody tr:nth-child(7) {
+  animation-delay: 0.18s;
+}
+table[id] tbody tr:nth-child(8) {
+  animation-delay: 0.21s;
+}
+table[id] tbody tr:nth-child(9) {
+  animation-delay: 0.24s;
+}
+table[id] tbody tr:nth-child(10) {
+  animation-delay: 0.27s;
+}
+
+/* احترام تفضيل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  table[id] tbody tr,
+  .actions-group > *,
+  table[id] tbody td img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+ * 12) تحسينات إضافية
+ * ============================================================ */
+
+/* شريط تمرير أفقي أنيق */
+.table-wrap::-webkit-scrollbar,
+table[id]::-webkit-scrollbar {
+  height: 8px;
+}
+.table-wrap::-webkit-scrollbar-track,
+table[id]::-webkit-scrollbar-track {
+  background: transparent;
+}
+.table-wrap::-webkit-scrollbar-thumb,
+table[id]::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+.table-wrap::-webkit-scrollbar-thumb:hover,
+table[id]::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* منع تحديد النص في الرأس */
+table[id] thead th {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* نص طويل → اقتطاع مع "..." */
+table[id] tbody td {
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* خلية الأزرار لا تُقتطع */
+table[id] tbody td:has(.actions-group) {
+  max-width: none;
+  overflow: visible;
+  white-space: nowrap;
+  width: 1%;
+  text-align: center;
+}
+
+/* خلية الصورة لا تُقتطع */
+table[id] tbody td[data-key="avatarUrl"] {
+  max-width: none;
+  overflow: visible;
+}
