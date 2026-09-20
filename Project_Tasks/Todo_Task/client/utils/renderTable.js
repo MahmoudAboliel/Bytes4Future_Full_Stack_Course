@@ -53,9 +53,9 @@ export const renderTable = ({
       } else if (col.type === "actions") {
         const actionsDiv = document.createElement("div");
         actionsDiv.classList.add("actions-group");
-        Object.values(col.actions).map(action => {
-            actionsDiv.append(action(row));
-        })
+        Object.values(col.actions).map((action) => {
+          actionsDiv.append(action(row));
+        });
         td.append(actionsDiv);
       }
 

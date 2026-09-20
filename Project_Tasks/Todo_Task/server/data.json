@@ -5,7 +5,7 @@
       "name": "Mahmoud Abulail",
       "email": "mahmoud.abulail@example.com",
       "avatarUrl": "./assests/images/patient_12.jpg",
-      "role": "own",
+      "role": "owner",
       "createdAt": "2025-01-10T08:00:00Z",
       "updatedAt": null
     },
@@ -44,6 +44,15 @@
       "role": "guest",
       "createdAt": "2025-02-05T14:20:00Z",
       "updatedAt": null
+    },
+    {
+      "name": "Ali Omar",
+      "email": "ali.omar@example.com",
+      "avatarUrl": "./assests/images/patient_8.jpg",
+      "role": "member",
+      "createdAt": "2026-09-20T14:57:50.171Z",
+      "updatedAt": null,
+      "id": "N1Jy7CFtz9A"
     }
   ],
   "tasks": [
@@ -81,7 +90,7 @@
         "auth",
         "nodejs"
       ],
-      "status": "archived",
+      "status": "done",
       "priority": "urgent",
       "dueDate": "2026-09-18T12:00:00Z",
       "completedAt": null,
@@ -334,7 +343,7 @@
     {
       "title": "the first test",
       "description": "this is the first sending",
-      "status": "backlog",
+      "status": "archived",
       "priority": "urgent",
       "assigneeIds": [
         "u-001",
@@ -371,6 +380,28 @@
       "updatedAt": null,
       "completedAt": null,
       "id": "YL00ZpZhjZc"
+    },
+    {
+      "title": "test two",
+      "description": "sadkflad fkalsd flsadkl jlsadj lfsdj",
+      "priority": "high",
+      "assigneeIds": [
+        "u-001",
+        "u-004",
+        "u-005"
+      ],
+      "tags": [
+        "html",
+        "css",
+        "js"
+      ],
+      "dueDate": "2026-09-30",
+      "creatorId": "u-001",
+      "createdAt": "2026-09-20T14:50:33.997Z",
+      "status": "backlog",
+      "updatedAt": null,
+      "completedAt": null,
+      "id": "OSodtV-qrH0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

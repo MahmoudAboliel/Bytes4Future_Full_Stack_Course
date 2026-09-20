@@ -1,6 +1,7 @@
 export const actions = ["backlog", "in_progress", "done", "archived", "delete"];
 export const status = ["backlog", "in_progress", "done", "archived"];
 export const priority = ["urgent", "high", "medium", "low"];
+export const roles = ["woner", "member", "guest"];
 
 export const taskFields = (usersRes = []) => [
   {
@@ -45,5 +46,35 @@ export const taskFields = (usersRes = []) => [
     label: "Task due date",
     type: "date",
     required: true,
+  },
+];
+
+export const userFields = [
+  {
+    type: "text",
+    name: "name",
+    label: "User Name",
+    required: true,
+  },
+  {
+    type: "email",
+    name: "email",
+    label: "User email",
+    required: true,
+  },
+  // {
+  //   type: "file",
+  //   name: "avatarUrl",
+  //   label: "User avatar",
+  //   required: true,
+  // },
+  {
+    type: "select",
+    name: "role",
+    label: "User role",
+    options: roles.map((item) => ({
+      label: item.charAt(0).toUpperCase() + item.slice(1),
+      value: item,
+    })),
   },
 ];

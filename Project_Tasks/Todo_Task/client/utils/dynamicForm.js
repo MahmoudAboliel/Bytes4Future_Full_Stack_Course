@@ -275,7 +275,7 @@ export const renderForm = ({
   cansel.value = buttons.cancel;
 
   const submitFunc = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (type == "json") {
       onSubmit(data);
       resetFunc();

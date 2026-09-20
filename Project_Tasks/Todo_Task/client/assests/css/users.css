@@ -386,7 +386,7 @@ table[id] tbody tr:only-child td:only-child {
 /* ============================================================
  * 10) الوضع الليلي (تلقائي)
  * ============================================================ */
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --table-bg: #1f2937;
     --table-bg-alt: #111827;
@@ -552,4 +552,117 @@ table[id] tbody td:has(.actions-group) {
 table[id] tbody td[data-key="avatarUrl"] {
   max-width: none;
   overflow: visible;
+}
+
+#addUser {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* width: 400px; */
+  /* margin: 0 auto; */
+  /* border: 1px solid #cfcfcf; */
+  /* padding: 25px; */
+  border-radius: 16px;
+  background: #ffffff;
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); */
+}
+#addUser .group-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#addUser .group-field label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+#addUser .group-field input,
+#addUser .group-field textarea {
+  padding: 10px 12px;
+  font-size: 17px;
+  outline: none;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+#addUser .group-field input:focus,
+#addUser .group-field textarea:focus {
+  /* border-color: #3f3f3f; */
+  /* box-shadow: 0 0 0 3px rgba(63, 63, 63, 0.15); */
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+  background: #fff;
+}
+#addUser .radio-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+}
+
+#addUser .group-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+}
+#addUser .group-buttons input {
+  font-size: 16px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  flex: 1;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+#addUser .group-buttons input:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+#addUser .group-buttons input[type="submit"] {
+  background-color: #3f3f3f;
+  color: #fff;
+}
+#addUser .group-buttons input[type="reset"] {
+  background-color: #c62828;
+  color: #fff;
+}
+.group-field select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.group-field select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+}
+
+/* multiple → يبدو كصندوق قائمة */
+.group-field select[multiple] {
+  padding: 6px;
+  min-height: 120px;
+}
+
+.group-field select[multiple] option {
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.group-field select[multiple] option:checked {
+  background: #3b82f6 linear-gradient(0deg, #3b82f6, #3b82f6);
+  color: #fff;
 }

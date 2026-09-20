@@ -49,6 +49,48 @@
               Search
             </button>
           </form>
+          <!-- Button trigger modal -->
+          <button
+            class="btn btn-outline-info m-2"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Add User
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Add User
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body" style="height: 100vh;">
+                  <form id="addUser">
+                    <!-- form display here -->
+                  </form>
+                  <!-- <select name="" id=""></select> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

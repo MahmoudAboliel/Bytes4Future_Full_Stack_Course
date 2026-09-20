@@ -1,4 +1,5 @@
 import { renderTable } from "../../utils/renderTable.js";
+import { renderForm } from "../../utils/dynamicForm.js";
 import {
   getUsers,
   getUserById,
@@ -6,6 +7,7 @@ import {
   deleteUser,
   updateUser,
 } from "../../services/user.service.js";
+import { userFields } from "../../utils/constants.js";
 
 const usersRes = await getUsers();
 
@@ -80,10 +82,34 @@ const columns = [
     },
   },
 ];
+
 renderTable({
   id: "users-table",
   columns,
   data: usersRes,
   searchable: true,
   comp: () => {},
+});
+
+const onSubmit = async (data = {}) => {
+  const newData = {
+    ...data,
+    createdAt: new Date(),
+    updatedAt: null,
+    avatarUrl: `./assests/images/${data.avatarUrl.name}`,
+  };
+  
+  const result = await addUser(newData);
+  console.log(result);
+};
+
+renderForm({
+  id: "addUser",
+  fields: userFields,
+  onSubmit,
+  type: "json",
+  buttons: {
+    send: "Add",
+    cancel: "clear",
+  },
 });
