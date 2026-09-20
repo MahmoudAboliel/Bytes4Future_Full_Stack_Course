@@ -45,7 +45,7 @@ export const renderTable = ({
         td.textContent = value ? new Date(value).toDateString() : "--";
       } else if (col.type === "img") {
         const img = document.createElement("img");
-        img.src = `.${value}`;
+        img.src = value;
         img.loading = "lazy";
 
         img.alt = value.split("/").at(-1);

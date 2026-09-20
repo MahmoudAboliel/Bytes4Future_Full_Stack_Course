@@ -96,7 +96,7 @@ const onSubmit = async (data = {}) => {
     ...data,
     createdAt: new Date(),
     updatedAt: null,
-    avatarUrl: `./assests/images/${data.avatarUrl.name}`,
+    avatarUrl: `../assests/images/${data.avatarUrl.name}`,
   };
   
   const result = await addUser(newData);
