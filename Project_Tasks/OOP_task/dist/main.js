@@ -1,0 +1,16 @@
+import Circle from "./CircleClass.js";
+import Rectangle from "./RectangleClass.js";
+import Triangle from "./TriangleClass.js";
+import ShapeUtilities from "./ShapeUtilities.js";
+import ShapeManager from "./ShapeManager.js";
+const c = new Circle("C1", 5, 10, 20);
+console.log('C1 area', c.getArea());
+console.log("C1 perimeter", c.getPerimeter());
+console.log("C1 diameter", c.getDiameter());
+console.log("is point inside circle", c.isPointInside(12, 22));
+console.log("C1 bounding box", c.getBoundingBox());
+c.scale(2);
+console.log("C1 radius", c.getRadius());
+console.log("C1 bounding box", c.getBoundingBox());
+const c2 = new Circle("C2", 10, 10, 20);
+console.log("C1 equals C2", c.equals(c2));
