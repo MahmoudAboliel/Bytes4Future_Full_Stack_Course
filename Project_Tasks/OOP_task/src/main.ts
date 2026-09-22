@@ -71,3 +71,4 @@ console.log("بحث:", m.getShape(c1.id)?.getName());
 
 m.clearAll();
 console.log("بعد المسح:", m.findShapes(() => true).length);
+ 
