@@ -117,7 +117,7 @@ export interface FormSection {
 export interface DynamicFormProps {
   fields?: FieldConfig[];
   sections?: FormSection[];
-  schema?: z.ZodSchema;
+  schema?: z.ZodType;
   onSubmit: (data: Record<string, unknown>) => void | Promise<void>;
   onError?: (errors: Record<string, string>) => void;
   defaultValues?: Record<string, unknown>;

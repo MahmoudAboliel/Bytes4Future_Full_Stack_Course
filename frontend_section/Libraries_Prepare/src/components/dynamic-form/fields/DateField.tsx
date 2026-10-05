@@ -63,8 +63,9 @@ export function DateField({ field }: { field: DateFieldConfig }) {
                   mode="single"
                   selected={date}
                   onSelect={(d) =>
-                    formField.onChange(d ? d.toISOString().split("T")[0] : "")
+                      formField.onChange(d ? format(d, "yyyy-MM-dd") : "")
                   }
+                  captionLayout="dropdown"
                   disabled={(d) =>
                     (field.minDate ? d < field.minDate : false) ||
                     (field.maxDate ? d > field.maxDate : false)
