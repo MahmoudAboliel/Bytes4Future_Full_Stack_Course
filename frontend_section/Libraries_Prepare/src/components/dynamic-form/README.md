@@ -252,6 +252,9 @@ export default function Page() {
   name: "country",
   label: "الدولة",
   type: "select",
+  searchable: true, // ← تفعيل البحث
+  searchPlaceholder: "ابحث عن دولة...", // ← تخصيص نص البحث
+  emptyMessage: "لم يتم العثور على دولة.", // ← تخصيص رسالة الفراغ
   placeholder: "اختر الدولة",
   required: true,
   options: [
