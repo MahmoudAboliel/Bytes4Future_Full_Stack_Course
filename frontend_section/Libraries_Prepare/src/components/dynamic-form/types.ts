@@ -59,6 +59,8 @@ export interface SelectFieldConfig extends BaseFieldConfig {
   type: "select" | "multiselect";
   options: FieldOption[];
   searchable?: boolean;
+  searchPlaceholder?: string; 
+  emptyMessage?: string;
 }
 
 export interface CheckboxFieldConfig extends BaseFieldConfig {

@@ -39,7 +39,7 @@ npx shadcn@latest init
 ### 2. تثبيت مكونات shadcn المطلوبة
 
 ```bash
-npx shadcn@latest add field input textarea select checkbox radio-group switch button calendar popover slider badge
+npx shadcn@latest add field input textarea select checkbox radio-group switch button calendar popover slider badge command
 ```
 
 ### 3. تثبيت المكتبات الأساسية

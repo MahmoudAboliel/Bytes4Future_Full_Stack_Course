@@ -26,7 +26,7 @@ const Register = () => {
           name: "phone",
           label: "رقم الجوال",
           type: "tel",
-          placeholder: "+966 5xxxxxxxx",
+          placeholder: "+963 9xxxxxxxx",
           required: true,
         },
         {
@@ -34,7 +34,6 @@ const Register = () => {
           label: "تاريخ الميلاد",
           type: "date",
           required: true,
-          minDate: new Date("2001-01-01"),
         },
         {
           name: "age",
@@ -61,25 +60,33 @@ const Register = () => {
           name: "country",
           label: "الدولة",
           type: "select",
+          searchable: true, // ← تفعيل البحث
+          searchPlaceholder: "ابحث عن دولة...", // ← تخصيص نص البحث
+          emptyMessage: "لم يتم العثور على دولة.", // ← تخصيص رسالة الفراغ
           placeholder: "اختر الدولة",
           required: true,
           options: [
+            { label: "سوريا", value: "sy" },
             { label: "السعودية", value: "sa" },
             { label: "الإمارات", value: "ae" },
             { label: "مصر", value: "eg" },
-            { label: "الكويت", value: "kw" },
+            { label: "الأردن", value: "jo" },
+            { label: "لبنان", value: "lb" },
+            { label: "العراق", value: "iq" },
+            // ... مئات الخيارات
           ],
         },
         {
           name: "skills",
           label: "المهارات",
           type: "multiselect",
-          searchable: true,
+          searchable: true, // ← يعمل أيضًا مع المتعدد
+          searchPlaceholder: "ابحث عن مهارة...",
           options: [
             { label: "React", value: "react" },
             { label: "TypeScript", value: "typescript" },
             { label: "Node.js", value: "nodejs" },
-            { label: "Python", value: "python" },
+            // ...
           ],
         },
         {
@@ -135,22 +142,29 @@ const Register = () => {
     },
   ];
 
-  const handleSubmit = async (data: Record<string, unknown>) => {
-    console.log("Form Data:", data);
+  const handleSubmit = async (
+    data: Record<string, any>,
+  ) => {
+    // console.log("Form Data:", typeof data);
+    const formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    console.log(formData);
     await new Promise((r) => setTimeout(r, 1500)); // محاكاة API
   };
 
   return (
     <div>
       {/* <h1>Register</h1> */}
-      <div className="p-4 shadow-sm border rounded-md my-3">
+      <div className="p-4 shadow-lg border rounded-md my-3">
         <DynamicForm
           sections={sections}
           onSubmit={handleSubmit}
           submitLabel="حفظ البيانات"
           cancelLabel="إلغاء"
           onCancel={() => console.log("cancelled")}
-          columns={2}
+          columns={3}
           onError={(errors) => console.log("Errors:", errors)}
         />
       </div>
