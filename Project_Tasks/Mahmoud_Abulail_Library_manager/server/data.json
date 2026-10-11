@@ -1,0 +1,341 @@
+{
+  "authors": [
+    {
+      "id": "A01",
+      "name": "نجيب محفوظ",
+      "nationality": "مصري"
+    },
+    {
+      "id": "A02",
+      "name": "غسان كنفاني",
+      "nationality": "فلسطيني"
+    },
+    {
+      "id": "A03",
+      "name": "أحلام مستغانمي",
+      "nationality": "جزائري"
+    },
+    {
+      "id": "A04",
+      "name": "الطيب صالح",
+      "nationality": "سوداني"
+    },
+    {
+      "id": "A05",
+      "name": "حنا مينه",
+      "nationality": "سوري"
+    },
+    {
+      "id": "A06",
+      "name": "توفيق الحكيم",
+      "nationality": "مصري"
+    },
+    {
+      "id": "A07",
+      "name": "جبرا إبراهيم جبرا",
+      "nationality": "فلسطيني"
+    },
+    {
+      "id": "A08",
+      "name": "عبد الرحمن منيف",
+      "nationality": "سعودي"
+    },
+    {
+      "id": "A09",
+      "name": "كوليت خوري",
+      "nationality": "سوري"
+    },
+    {
+      "id": "A10",
+      "name": "يوسف إدريس",
+      "nationality": "مصري"
+    },
+    {
+      "name": "Ali Mohamad",
+      "nationality": "Eygpt",
+      "id": "1"
+    },
+    {
+      "name": "Khalid Ahmad",
+      "nationality": "Gorden",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Haruki Murakami",
+      "nationality": "Japanese"
+    },
+    {
+      "name": "Mahmoud Abulail",
+      "nationality": "Syrian",
+      "id": "Ai0mUhSRjSY"
+    },
+    {
+      "name": "Ammar Farha",
+      "nationality": "Syrian",
+      "id": "Lu1JOeguilg"
+    },
+    {
+      "name": "عبد الرحمن",
+      "nationality": "سوري",
+      "id": "4kMFIX7sh0g"
+    }
+  ],
+  "books": [
+    {
+      "id": "B01",
+      "title": "زقاق المدق",
+      "authorId": "A01",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B02",
+      "title": "رجال في الشمس",
+      "authorId": "A02",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B03",
+      "title": "ذاكرة الجسد",
+      "authorId": "A03",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B04",
+      "title": "موسم الهجرة إلى الشمال",
+      "authorId": "A04",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B05",
+      "title": "المصابيح الزرق",
+      "authorId": "A05",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B06",
+      "title": "أهل الكهف",
+      "authorId": "A06",
+      "category": "مسرحية",
+      "available": false
+    },
+    {
+      "id": "B07",
+      "title": "السفينة",
+      "authorId": "A07",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B08",
+      "title": "شرق المتوسط",
+      "authorId": "A08",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B09",
+      "title": "أيام معه",
+      "authorId": "A09",
+      "category": "مذكرات",
+      "available": false
+    },
+    {
+      "id": "B10",
+      "title": "الحرام",
+      "authorId": "A10",
+      "category": "رواية",
+      "available": false
+    },
+    {
+      "id": "B11",
+      "title": "الثلاثية",
+      "authorId": "A01",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B12",
+      "title": "عائد إلى حيفا",
+      "authorId": "A02",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B13",
+      "title": "الأسود يليق بك",
+      "authorId": "A03",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B14",
+      "title": "عرس الزين",
+      "authorId": "A04",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B15",
+      "title": "بقايا صور",
+      "authorId": "A05",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B16",
+      "title": "عصفور من الشرق",
+      "authorId": "A06",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B17",
+      "title": "البئر الأولى",
+      "authorId": "A07",
+      "category": "سيرة ذاتية",
+      "available": true
+    },
+    {
+      "id": "B18",
+      "title": "مدن الملح",
+      "authorId": "A08",
+      "category": "رواية",
+      "available": true
+    },
+    {
+      "id": "B19",
+      "title": "دمشق بيتي",
+      "authorId": "A09",
+      "category": "مذكرات",
+      "available": true
+    },
+    {
+      "id": "B20",
+      "title": "قاع المدينة",
+      "authorId": "A10",
+      "category": "قصص قصيرة",
+      "available": true
+    },
+    {
+      "id": "1",
+      "title": "Pride and Prejudice",
+      "authorId": "1",
+      "category": "Classic",
+      "available": false
+    },
+    {
+      "id": "2",
+      "title": "One Hundred Years of Solitude",
+      "authorId": 2,
+      "category": "Magical Realism",
+      "available": false
+    },
+    {
+      "title": "العالم المظلم",
+      "category": "رواية",
+      "available": false,
+      "authorId": "4kMFIX7sh0g",
+      "id": "JeFJ75wXq7k"
+    }
+  ],
+  "borrows": [
+    {
+      "id": "L01",
+      "bookId": "B01",
+      "borrowerName": "أحمد الخطيب",
+      "borrowDate": "2026-01-05",
+      "returnDate": "2026-10-19"
+    },
+    {
+      "id": "L02",
+      "bookId": "B02",
+      "borrowerName": "سارة العلي",
+      "borrowDate": "2026-01-07",
+      "returnDate": "2026-11-21"
+    },
+    {
+      "id": "L03",
+      "bookId": "B03",
+      "borrowerName": "محمد الحسن",
+      "borrowDate": "2026-01-10",
+      "returnDate": "2026-12-24"
+    },
+    {
+      "id": "L04",
+      "bookId": "B04",
+      "borrowerName": "ليان خالد",
+      "borrowDate": "2026-01-12",
+      "returnDate": "2026-10-26"
+    },
+    {
+      "id": "L05",
+      "bookId": "B05",
+      "borrowerName": "يوسف درويش",
+      "borrowDate": "2026-01-15",
+      "returnDate": "2026-09-29"
+    },
+    {
+      "id": "L06",
+      "bookId": "B06",
+      "borrowerName": "نور الهدى",
+      "borrowDate": "2026-01-18",
+      "returnDate": "2026-9-29"
+    },
+    {
+      "id": "L07",
+      "bookId": "B07",
+      "borrowerName": "عمر الشريف",
+      "borrowDate": "2026-01-20",
+      "returnDate": "2026-02-03"
+    },
+    {
+      "id": "L08",
+      "bookId": "B08",
+      "borrowerName": "رنا حمدان",
+      "borrowDate": "2026-01-22",
+      "returnDate": "2026-02-05"
+    },
+    {
+      "id": "L09",
+      "bookId": "B09",
+      "borrowerName": "كريم الزين",
+      "borrowDate": "2026-01-25",
+      "returnDate": "2026-02-08"
+    },
+    {
+      "id": "L10",
+      "bookId": "B10",
+      "borrowerName": "هبة منصور",
+      "borrowDate": "2026-01-28",
+      "returnDate": "2026-02-11"
+    },
+    {
+      "id": "1",
+      "bookId": "1",
+      "borrowerName": "Alice Johnson",
+      "borrowDate": "2024-01-10",
+      "returnDate": "2024-01-24"
+    },
+    {
+      "id": "2",
+      "bookId": "2",
+      "borrowerName": "Michael Smith",
+      "borrowDate": "2024-02-05",
+      "returnDate": "2024-03-05"
+    },
+    {
+      "borrowerName": "خالد الأحمد",
+      "returnDate": "2026-10-29",
+      "borrowDate": "2026-09-29T12:56:50.866Z",
+      "bookId": "JeFJ75wXq7k",
+      "id": "VF5RhMZ-Z0U"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
