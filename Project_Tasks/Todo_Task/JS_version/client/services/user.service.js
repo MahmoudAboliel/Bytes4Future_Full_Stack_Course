@@ -1,0 +1,57 @@
+import { request } from "../utils/api.js";
+
+export const getUsers = async () => {
+  const result = await request("users");
+  return result.data;
+};
+
+// const u = await getUsers();
+// console.log(u);
+
+export const getUserById = async (userId="") => {
+  const result = await request(`users/${userId}`);
+  return result.data;
+};
+
+// const i = await getUserById("u-002");
+// console.log(i);
+
+export const addUser = async (user = {}) => {
+  const users = await getUsers();
+  const checkUser = users.data?.find(u => u.email == user.email);
+  if (checkUser) {
+    return {
+      status: 400,
+      message: "this user already exists.",
+    };
+  }
+
+  const result = await request("users", "POST", user);
+
+  return result;
+};
+
+// const x = await addUser({ name: "ali", email: "ali@gmail.com" });
+// console.log(x);
+
+export const deleteUser = async (userId = "") => {
+  const result = await request(`users/${userId}`, "DELETE");
+  return result;
+};
+// const y = await deleteUser("1");
+// console.log(y);
+
+export const updateUser = async (userId = "", data = {}) => {
+  const result = await request(`users/${userId}`, "PUT", data);
+  return result;
+};
+// const z = await updateUser("u-001", {
+//   id: "u-001",
+//   name: "Mahmoud Abulail",
+//   email: "mahmoud.abulail@example.com",
+//   avatarUrl: "./assests/images/patient_12.jpg",
+//   role: "owner",
+//   createdAt: "2025-01-10T08:00:00Z",
+//   updatedAt: null,
+// });
+// console.log(z);
