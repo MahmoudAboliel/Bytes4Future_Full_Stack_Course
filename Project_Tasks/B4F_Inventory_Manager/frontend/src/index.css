@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.no-scrollbar {
+    /* لمتصفحات لـ Chrome و Safari و Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* لمتصفحي IE و Edge */
+    -ms-overflow-style: none;  
+    
+    /* لمتصفح Firefox */
+    scrollbar-width: none;  
+}

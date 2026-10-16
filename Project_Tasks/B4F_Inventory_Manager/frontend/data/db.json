@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Lenovo-Laptop",
+      "quantity": 8,
+      "minimumQuantity": 5,
+      "imageUrl": "https://placehold.co/100x100?text=Laptop",
+      "createdAt": "2026-10-01T10:00:00.000Z",
+      "updatedAt": "2026-10-14T18:49:37.837Z",
+      "deletedAt": null
+    },
+    {
+      "id": "2",
+      "name": "Wireless Mouse",
+      "quantity": 3,
+      "minimumQuantity": 10,
+      "imageUrl": "https://placehold.co/100x100?text=Mouse",
+      "createdAt": "2026-10-02T10:00:00.000Z",
+      "updatedAt": "2026-10-02T10:00:00.000Z",
+      "deletedAt": null
+    },
+    {
+      "id": "3",
+      "name": "Keyboard",
+      "quantity": 25,
+      "minimumQuantity": 5,
+      "imageUrl": "https://placehold.co/100x100?text=Keyboard",
+      "createdAt": "2026-10-03T10:00:00.000Z",
+      "updatedAt": "2026-10-03T10:00:00.000Z",
+      "deletedAt": null
+    },
+    {
+      "id": "4",
+      "name": "Monitor",
+      "quantity": 2,
+      "minimumQuantity": 4,
+      "imageUrl": "https://placehold.co/100x100?text=Monitor",
+      "createdAt": "2026-10-04T10:00:00.000Z",
+      "updatedAt": "2026-10-04T10:00:00.000Z",
+      "deletedAt": null
+    },
+    {
+      "id": "5",
+      "name": "USB-C Cable",
+      "quantity": 40,
+      "minimumQuantity": 15,
+      "imageUrl": "https://placehold.co/100x100?text=Cable",
+      "createdAt": "2026-10-05T10:00:00.000Z",
+      "updatedAt": "2026-10-05T10:00:00.000Z",
+      "deletedAt": null
+    }
+  ],
+  "movements": [
+    {
+      "id": "1",
+      "productId": "1",
+      "type": "in",
+      "amount": 10,
+      "notes": "Initial stock delivery",
+      "createdAt": "2026-10-01T10:00:00.000Z",
+      "updatedAt": "2026-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "productId": "2",
+      "type": "out",
+      "amount": 2,
+      "notes": "Issued to employee",
+      "createdAt": "2026-10-02T11:00:00.000Z",
+      "updatedAt": "2026-10-02T11:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "productId": "3",
+      "type": "in",
+      "amount": 20,
+      "notes": "Restocked keyboards",
+      "createdAt": "2026-10-03T12:00:00.000Z",
+      "updatedAt": "2026-10-03T12:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "productId": "4",
+      "type": "out",
+      "amount": 3,
+      "notes": "Replacement monitors",
+      "createdAt": "2026-10-04T13:00:00.000Z",
+      "updatedAt": "2026-10-04T13:00:00.000Z"
+    }
+  ]
+}
