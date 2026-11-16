@@ -1,0 +1,26 @@
+info:
+  name: register
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:4000/api/auth/register
+  body:
+    type: json
+    data: |-
+      {
+          "role": "admin",
+          "fullName": "أحمد محمود الخالدي",
+          "email": "admin@center.com",
+          "password": "12345678",
+          "phone": "+962791000001",
+        "birthDate": "1987-04-02"
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

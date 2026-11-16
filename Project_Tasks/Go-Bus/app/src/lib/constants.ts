@@ -1,0 +1,17 @@
+export const SYRIAN_GOVERNORATES = [
+  { label: "اختر محافظة", value: "" },
+  { label: "دمشق", value: "دمشق" },
+  { label: "ريف دمشق", value: "ريف دمشق" },
+  { label: "حلب", value: "حلب" },
+  { label: "حمص", value: "حمص" },
+  { label: "حماة", value: "حماة" },
+  { label: "اللاذقية", value: "اللاذقية" },
+  { label: "طرطوس", value: "طرطوس" },
+  { label: "إدلب", value: "إدلب" },
+  { label: "دير الزور", value: "دير الزور" },
+  { label: "الرقة", value: "الرقة" },
+  { label: "الحسكة", value: "الحسكة" },
+  { label: "درعا", value: "درعا" },
+  { label: "السويداء", value: "السويداء" },
+  { label: "القنيطرة", value: "القنيطرة" },
+];

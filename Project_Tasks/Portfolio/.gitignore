@@ -1,0 +1,12 @@
+node_modules
+/.react-router
+/build
+/.cache
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.vercel
+_spec.txt
+.preview

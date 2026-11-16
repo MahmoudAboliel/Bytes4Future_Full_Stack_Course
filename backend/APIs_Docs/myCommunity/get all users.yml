@@ -1,0 +1,28 @@
+info:
+  name: get all users
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:4000/users?page=1&limit=10&sortAge=1
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "10"
+      type: query
+    - name: sortAge
+      value: "1"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

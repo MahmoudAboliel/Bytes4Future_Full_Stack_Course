@@ -1,0 +1,20 @@
+1-npm init -y
+2-npm i(install) express "frame work backEnd"
+3-npm i(install) nodemon "watch to all files"
+4-npm i(install) dotenv "to initiales environment variable"
+5-npm i(install) mongoose
+6-the main flow :
+    a-server.js => eall number (b) app.js
+    b-app.js
+    c-routes
+    d-controllers
+    d-service
+    f-model  
+    
+6-get the data from mongoDB compase
+7-npm i(install) mogoose
+
+
+
+
+

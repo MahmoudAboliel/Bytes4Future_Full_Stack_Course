@@ -1,0 +1,350 @@
+/* ==========================================================================
+   EDUMS — Design System
+   Tailwind v4 · @theme tokens + @utility component classes
+   RTL-first (Arabic) with LTR islands for emails / IDs / numbers.
+
+   NOTE ON MODIFIERS
+   In Tailwind v4 a nested `&--modifier` inside `@utility` compiles to
+   `--modifier.ui-utility` (an element selector) and never matches. Every
+   variant below is therefore declared as its own `@utility`, which emits
+   the correct `.ui-utility--modifier` class.
+   ========================================================================== */
+
+/* 1. Tailwind */
+@import "tailwindcss";
+
+/* Utilities whose class names are built at runtime (template literals) are
+   invisible to Tailwind's scanner, so they are force-emitted here. */
+@source inline("ui-button--sm ui-button--md ui-button--lg ui-button--full ui-button--primary ui-button--secondary ui-button--outline ui-button--ghost ui-button--danger ui-button--success ui-card--md-body ui-card--sm-body ui-card--none-body ui-input--sm ui-input--md ui-input--error ui-modal--xs ui-modal--sm ui-modal--md ui-modal--lg ui-modal--xl ui-modal--2xl ui-toast--success ui-toast--error ui-toast--warning ui-toast--info ui-toast-mark-success ui-toast-mark-error ui-toast-mark-warning ui-toast-mark-info ui-form--columns-1 ui-form--columns-2 ui-form--columns-3");
+
+/* 2. Design tokens --------------------------------------------------------- */
+@theme {
+  /* Surfaces */
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-ink: #1f2333;
+  --color-border: #e4e8f0;
+  --color-border-strong: #d3d9e6;
+
+  /* Brand */
+  --color-brand-blue: #2f6bff;
+  --color-brand-blue-dark: #1f52d6;
+  --color-brand-blue-soft: #eef3ff;
+  --color-brand-lavender: #9b6cf2;
+  --color-brand-amber: #e2a13f;
+  --color-muted: #6b7385;
+  --color-muted-soft: #98a0b3;
+
+  /* Status */
+  --color-success-50: #ecfdf3;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-error-50: #fef2f2;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-warning-50: #fffbeb;
+  --color-warning-600: #d97706;
+  --color-info-50: #eff6ff;
+  --color-info-600: #2563eb;
+
+  /* Radii */
+  --radius-btn: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-field: 0.5rem;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px 0 rgb(16 24 40 / 0.04), 0 1px 3px 0 rgb(16 24 40 / 0.06);
+  --shadow-card-lg: 0 4px 6px -1px rgb(16 24 40 / 0.05), 0 10px 20px -4px rgb(16 24 40 / 0.08);
+  --shadow-pop: 0 12px 32px -8px rgb(16 24 40 / 0.18), 0 4px 10px -4px rgb(16 24 40 / 0.08);
+
+  /* Motion */
+  --animate-fadeIn: fadeIn 0.18s ease-out both;
+  --animate-slideUp: slideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slideIn: slideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 3. Base ------------------------------------------------------------------ */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  font-feature-settings: "ss01", "cv01";
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+* {
+  @apply border-border;
+}
+
+:focus-visible {
+  @apply outline-none ring-2 ring-brand-blue ring-offset-2 ring-offset-canvas;
+}
+
+::selection {
+  @apply bg-brand-blue/20;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(152 160 179 / 0.5) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgb(152 160 179 / 0.45);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(152 160 179 / 0.7);
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* 4. Utilities ------------------------------------------------------------- */
+
+/* ---------------- Button ---------------- */
+@utility ui-button {
+  @apply inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-btn font-semibold transition-all duration-150;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  @apply active:scale-[0.98];
+
+  &:disabled {
+    @apply pointer-events-none opacity-50;
+  }
+}
+
+@utility ui-button--sm { @apply h-8 rounded-lg px-3 text-xs; }
+@utility ui-button--md { @apply h-10 px-4 text-sm; }
+@utility ui-button--lg { @apply h-11 px-5 text-sm; }
+@utility ui-button--full { @apply w-full; }
+@utility ui-button--primary { @apply bg-brand-blue text-white shadow-sm hover:bg-brand-blue-dark; }
+@utility ui-button--secondary { @apply bg-brand-blue-soft text-brand-blue hover:bg-brand-blue/15; }
+@utility ui-button--outline { @apply border border-border-strong bg-white text-ink hover:border-brand-blue/40 hover:bg-brand-blue-soft/60 hover:text-brand-blue; }
+@utility ui-button--ghost { @apply text-muted hover:bg-black/[0.05] hover:text-ink; }
+@utility ui-button--danger { @apply bg-error-600 text-white shadow-sm hover:bg-error-700; }
+@utility ui-button--success { @apply bg-success-600 text-white shadow-sm hover:bg-success-700; }
+
+@utility ui-spinner {
+  @apply inline-block shrink-0 rounded-full border-2 border-current border-r-transparent;
+  animation: ui-spin 0.65s linear infinite;
+}
+
+/* ---------------- Card ---------------- */
+@utility ui-card {
+  @apply rounded-card border border-border bg-white shadow-card;
+}
+@utility ui-card-header {
+  @apply flex items-start justify-between gap-3 border-b border-border px-5 py-4;
+}
+@utility ui-card-title { @apply text-sm font-bold text-ink; }
+@utility ui-card-subtitle { @apply mt-0.5 text-xs leading-relaxed text-muted; }
+@utility ui-card-action { @apply shrink-0; }
+@utility ui-card-body { @apply text-sm; }
+@utility ui-card-footer { @apply border-t border-border bg-canvas/70 px-5 py-3.5; }
+
+@utility ui-card--md { @apply p-0; }
+@utility ui-card--sm { @apply p-0; }
+@utility ui-card--none { @apply p-0; }
+
+/* Card padding is driven by the body, so the modifier targets the body. */
+@utility ui-card--md-body { @apply p-5; }
+@utility ui-card--sm-body { @apply p-3.5; }
+@utility ui-card--none-body { @apply p-0; }
+
+/* ---------------- Fields / Input ---------------- */
+@utility ui-field { @apply min-w-0; }
+@utility ui-label { @apply mb-1.5 block text-[13px] font-semibold text-ink; }
+@utility ui-required { @apply ms-0.5 text-error-500; }
+@utility ui-input-wrap { @apply relative flex; }
+
+@utility ui-input {
+  @apply block w-full rounded-field border border-border-strong bg-white text-sm text-ink transition-all duration-150;
+  @apply placeholder:text-muted-soft hover:border-border-strong;
+  @apply focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/12 focus:outline-none;
+  @apply disabled:cursor-not-allowed disabled:bg-canvas disabled:text-muted;
+}
+@utility ui-input--sm { @apply h-9 px-3 text-[13px]; }
+@utility ui-input--md { @apply h-10 px-3.5; }
+@utility ui-input--error { @apply border-error-500 hover:border-error-500 focus:border-error-500 focus:ring-error-500/15; }
+
+@utility ui-input-affix {
+  @apply pointer-events-none absolute inset-y-0 flex items-center text-muted-soft;
+}
+@utility ui-input-wrap--affix {
+  & .ui-input-affix:first-child { @apply start-3; }
+  & .ui-input-affix:last-child { @apply end-3; }
+  & .ui-input { padding-inline-start: 2.5rem; }
+  & .ui-input-affix:first-child:last-child {
+    inset-inline-start: auto;
+    padding-inline-start: 0.875rem;
+    inset-inline-end: 0.75rem;
+    padding-inline-end: 2.5rem;
+  }
+}
+
+@utility ui-field-error {
+  @apply mt-1.5 flex items-center gap-1 text-xs font-medium text-error-600;
+}
+@utility ui-field-hint { @apply mt-1.5 text-xs leading-relaxed text-muted; }
+
+/* ---------------- Toolbar / Filter ---------------- */
+@utility ui-toolbar { @apply flex flex-wrap items-center gap-2.5; }
+@utility ui-filter { @apply flex flex-wrap items-end gap-2.5; }
+@utility ui-filter-search { @apply min-w-[240px] flex-1; }
+@utility ui-filter-select { @apply w-[168px]; }
+
+/* ---------------- Form ---------------- */
+@utility ui-form { @apply flex flex-col; }
+@utility ui-form-grid { @apply grid gap-x-4 gap-y-4; }
+@utility ui-form-field--full { @apply sm:col-span-2; }
+@utility ui-form-field--full-3 { @apply sm:col-span-3; }
+
+@utility ui-form--columns-1 { & .ui-form-grid { @apply grid-cols-1; } }
+@utility ui-form--columns-2 { & .ui-form-grid { @apply sm:grid-cols-2; } }
+@utility ui-form--columns-3 { & .ui-form-grid { @apply sm:grid-cols-3; } }
+@utility ui-form--compact {
+  & .ui-form-grid { @apply gap-x-3.5 gap-y-3.5; }
+}
+
+/* Section: a titled group of fields */
+@utility ui-form-section {
+  @apply grid gap-4 sm:grid-cols-[184px_1fr] sm:gap-6;
+
+  & + & {
+    @apply mt-1 border-t border-border pt-5;
+  }
+}
+@utility ui-form-section-aside { @apply sm:pt-0.5; }
+@utility ui-form-section-title {
+  @apply flex items-center gap-2 text-[13px] font-bold text-ink;
+}
+@utility ui-form-section-description {
+  @apply mt-1 text-xs leading-relaxed text-muted;
+}
+@utility ui-form-section-body { @apply min-w-0; }
+@utility ui-form-section-icon {
+  @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-blue-soft text-brand-blue;
+}
+
+@utility ui-form-actions {
+  @apply sticky bottom-0 z-10 -mx-6 mt-6 flex items-center justify-end gap-2.5 border-t border-border bg-white/95 px-6 py-3.5 backdrop-blur;
+}
+@utility ui-form-actions--inline {
+  @apply static mx-0 mt-5 border-0 bg-transparent px-0 py-0 backdrop-blur-none;
+}
+@utility ui-form-alert {
+  @apply flex items-start gap-2.5 rounded-field border border-error-500/25 bg-error-50 px-3.5 py-3 text-sm text-error-700;
+}
+
+/* ---------------- Modal ---------------- */
+@utility ui-modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-end justify-center bg-ink/45 p-0 backdrop-blur-[2px] animate-fadeIn sm:items-center sm:p-5;
+}
+@utility ui-modal {
+  @apply flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-2xl bg-white shadow-pop animate-slideUp sm:rounded-card;
+}
+@utility ui-modal-header {
+  @apply flex shrink-0 items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6;
+
+  & h2 { @apply text-base font-bold tracking-tight text-ink; }
+  & p { @apply mt-1 text-[13px] leading-relaxed text-muted; }
+}
+@utility ui-modal-content {
+  @apply scrollbar-thin flex-1 overflow-y-auto px-5 py-5 sm:px-6;
+}
+@utility ui-modal-footer {
+  @apply flex shrink-0 items-center justify-end gap-2.5 border-t border-border bg-canvas/70 px-5 py-3.5 sm:px-6;
+}
+
+@utility ui-modal--xs { @apply sm:max-w-sm; }
+@utility ui-modal--sm { @apply sm:max-w-md; }
+@utility ui-modal--md { @apply sm:max-w-xl; }
+@utility ui-modal--lg { @apply sm:max-w-3xl; }
+@utility ui-modal--xl { @apply sm:max-w-5xl; }
+@utility ui-modal--2xl { @apply sm:max-w-7xl; }
+
+/* ---------------- Table ---------------- */
+@utility ui-table-shell {
+  @apply overflow-hidden rounded-card border border-border bg-white shadow-card;
+}
+@utility ui-table-scroll { @apply scrollbar-thin overflow-x-auto; }
+@utility ui-table { @apply w-full border-collapse text-sm; }
+@utility ui-table-thead { @apply border-b border-border bg-canvas/80; }
+@utility ui-table-th {
+  @apply whitespace-nowrap px-4 py-3 text-right text-[11px] font-bold uppercase tracking-wide text-muted;
+}
+@utility ui-table-tr { @apply border-b border-border/60 transition-colors last:border-0 hover:bg-brand-blue-soft/40; }
+@utility ui-table-td { @apply px-4 py-3.5 text-ink/90; }
+@utility ui-table-row-clickable { @apply cursor-pointer; }
+@utility ui-table-empty { @apply px-4 py-14 text-center text-sm text-muted; }
+@utility ui-table-pagination {
+  @apply flex flex-wrap items-center justify-between gap-3 border-t border-border bg-canvas/60 px-4 py-3 text-xs text-muted;
+
+  & > div { @apply flex items-center gap-1; }
+  & button {
+    @apply rounded-lg p-1.5 transition-colors hover:bg-black/[0.05] disabled:pointer-events-none disabled:opacity-40;
+  }
+}
+
+/* ---------------- Toast ---------------- */
+@utility ui-toast {
+  @apply flex w-full items-start gap-3 rounded-card border border-border bg-white p-4 shadow-pop animate-slideIn;
+}
+@utility ui-toast-mark { @apply mt-0.5 shrink-0; }
+@utility ui-toast-copy {
+  @apply flex-1 pt-0.5;
+
+  & strong { @apply block text-sm font-bold; }
+  & p { @apply mt-0.5 text-[13px] leading-relaxed text-ink/80; }
+}
+
+@utility ui-toast--success { @apply border-success-500/25; }
+@utility ui-toast--error { @apply border-error-500/25; }
+@utility ui-toast--warning { @apply border-warning-600/25; }
+@utility ui-toast--info { @apply border-brand-blue/25; }
+
+@utility ui-toast-mark-success { @apply text-success-600; }
+@utility ui-toast-mark-error { @apply text-error-600; }
+@utility ui-toast-mark-warning { @apply text-warning-600; }
+@utility ui-toast-mark-info { @apply text-brand-blue; }
+
+/* ---------------- Misc ---------------- */
+@utility ui-icon-button {
+  @apply rounded-lg p-2 text-muted transition-colors hover:bg-black/[0.05] hover:text-ink;
+}
+@utility ui-visually-hidden {
+  @apply absolute h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+  clip: rect(0, 0, 0, 0);
+  margin: -1px;
+}
+@utility ui-page { @apply space-y-6; }
+@utility ui-section-title { @apply text-sm font-bold text-ink; }

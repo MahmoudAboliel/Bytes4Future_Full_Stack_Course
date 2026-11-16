@@ -1,0 +1,403 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (set on <html> before first paint). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-card: var(--card);
+  --color-glow: var(--glow);
+}
+
+/* ── Tokens ──────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --bg: #f7f7f4;
+  --bg-elev: #ffffff;
+  --fg: #0a0a0d;
+  --fg-soft: #33363f;
+  --muted: #646874;
+  --line: rgba(10, 10, 13, 0.1);
+  --line-strong: rgba(10, 10, 13, 0.18);
+  --accent: #5338e8;
+  --accent-2: #0b8f9e;
+  --card: rgba(255, 255, 255, 0.72);
+  --glow: rgba(83, 56, 232, 0.16);
+  --grid: rgba(10, 10, 13, 0.055);
+  --shadow-soft: 0 1px 2px rgba(10, 10, 13, 0.04), 0 12px 32px -18px rgba(10, 10, 13, 0.28);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #07070b;
+  --bg-elev: #0c0c12;
+  --fg: #f4f4f7;
+  --fg-soft: #c9cbd6;
+  --muted: #8d91a2;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --accent: #8f7bff;
+  --accent-2: #3fe0ef;
+  --card: rgba(255, 255, 255, 0.035);
+  --glow: rgba(143, 123, 255, 0.22);
+  --grid: rgba(255, 255, 255, 0.06);
+  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 24px 56px -32px rgba(0, 0, 0, 0.9);
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 6rem;
+  }
+
+  html[dir="rtl"] {
+    --font-sans: "IBM Plex Sans Arabic", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "IBM Plex Sans Arabic", "Plus Jakarta Sans", ui-sans-serif, system-ui,
+      sans-serif;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4 {
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 28%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ── Effects ─────────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.fade-mask {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 100%);
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--fg) 6%,
+    var(--accent) 46%,
+    var(--accent-2) 92%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .text-gradient {
+  background-image: linear-gradient(100deg, #ffffff 8%, var(--accent) 48%, var(--accent-2) 96%);
+}
+
+/* Pointer-tracking spotlight on cards */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in oklab, var(--accent) 16%, transparent),
+    transparent 62%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Scroll reveal — only hides content when JS is running. */
+[data-anim="on"] .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-anim="on"] .reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim="on"] .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Animated aurora behind the hero */
+.aurora {
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  filter: blur(70px);
+  opacity: 0.75;
+  background:
+    radial-gradient(38% 42% at 22% 28%, color-mix(in oklab, var(--accent) 42%, transparent), transparent 70%),
+    radial-gradient(34% 38% at 76% 22%, color-mix(in oklab, var(--accent-2) 30%, transparent), transparent 72%),
+    radial-gradient(40% 40% at 62% 82%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 72%);
+  animation: drift 22s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.dark .aurora {
+  opacity: 0.42;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 2%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-1%, 3%, 0) scale(1.02);
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+.float-y {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, #22c55e 55%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-out infinite;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 34s linear infinite;
+  width: max-content;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+html[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+.shimmer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in oklab, var(--accent) 22%, transparent) 46%,
+    transparent 72%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Logical edge fades (work in both directions) */
+.edge-fade {
+  position: absolute;
+  inset-block: 0;
+  width: 5.5rem;
+  z-index: 10;
+  pointer-events: none;
+}
+.edge-fade-start {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+.edge-fade-end {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+html[dir="rtl"] .edge-fade-start {
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+html[dir="rtl"] .edge-fade-end {
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+
+/* Soft glass panel */
+.glass {
+  background: var(--card);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Decorative gradient hairline */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--accent) 45%, transparent),
+    color-mix(in oklab, var(--accent-2) 35%, transparent),
+    transparent
+  );
+}
+
+/* ── Print (CV) ──────────────────────────────────────────────── */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-reset {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+  }
+
+  .print-break-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* The CV is laid out like the on-screen sheet (two columns) and scaled a
+     little so it fits the printed page. It is scaled by `zoom` only — never
+     widened — so nothing can spill past the paper edge. */
+  .cv-sheet {
+    zoom: 0.72;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Smooth appearance for the CV sheet on screen */
+.cv-sheet {
+  box-shadow: 0 30px 80px -40px rgba(8, 8, 12, 0.45);
+}

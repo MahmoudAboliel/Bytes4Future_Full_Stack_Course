@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mahmoud Abulail">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8f7bff"/>
+      <stop offset="1" stop-color="#3fe0ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path d="M15 45V19h5.6l11.4 16.2L43.4 19H49v26h-5.2V28.4L33.6 43h-3.2L20.2 28.4V45H15Z" fill="#07070b"/>
+</svg>
